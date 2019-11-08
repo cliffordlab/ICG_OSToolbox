@@ -824,16 +824,17 @@ txt_timeaxes = uicontrol(hMainFigure, ...
         elseif(strcmp(timelim,'Beat Length'))
             Rpeak_indices = sort(Rpeak_indices);
             if length(Rpeak_indices) <=1
-                msgbox('Please annotate R peak for displaying ECG and ICG beat','Warning Window Name','warn');
+                msgbox('Please annotate R peak for displaying ECG and ICG beat','Warning Window Name','warn')    
+                set(htimeaxes_pop, 'value', 1)
             else
-                seg_window = (length(ecg)/fs)/length(Rpeak_indices);          % change from IMAA
+                seg_window = (length(ecg)/fs)/length(Rpeak_indices);          
+                set(hcomp_param,'Enable','on');
+                set(hdisp_RC_feature,'visible','on');
+                set(hRC_pop,'Enable','on');
+                RC_feat = cellstr(get(hRC_pop,'String'));
+                RC_feature = RC_feat{ beatsFeature(1)};
+                set(hdisp_RC_feature,'String',strcat('RC: ', RC_feature)) ;
             end
-            set(hcomp_param,'Enable','on');
-            set(hdisp_RC_feature,'visible','on');
-            set(hRC_pop,'Enable','on');
-            RC_feat = cellstr(get(hRC_pop,'String'));
-            RC_feature = RC_feat{ beatsFeature(1)};
-            set(hdisp_RC_feature,'String',strcat('RC: ', RC_feature)) ;
             
             if ECG_hide_mk                               % checking if ECG Hide is activated or not
                 set(hdisp_C_Shape,'visible','on');
