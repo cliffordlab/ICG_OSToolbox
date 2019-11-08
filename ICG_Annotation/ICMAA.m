@@ -12,7 +12,8 @@ function varargout = ICMAA(varargin)
 %    Annotations of fiduical points for EA ECG signal and three Stage EA ICG signal.
 
 % DEPENDENCIES & LIBRARIES:
-%   Nil
+%   ICG Noise Removal Toolbox
+%   https://github.com/cliffordlab/ICG_OSToolbox
 
 % REFERENCE: 
 %   Shafa-at Ali Sheikh et al. "An Open Sourc Toolbox for Automated Removal
