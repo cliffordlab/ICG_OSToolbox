@@ -1,5 +1,5 @@
 function varargout = ICMAA(varargin)
-% ----------  Impedancce Cardiogram Manual Annotation Application ---------
+% ----------  Impedancce Cardiogram Manual Annotation Application ----------
 % OVERVIEW:
 %    ICMAA GUI file for "Open source toolbox for removal of noisy beats from ICG"
 %    Configured to accept Ensemble averaged (EA) ECG and ICG signals to
