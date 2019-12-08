@@ -659,7 +659,7 @@ tick_help = uicontrol(hMainFigure, ...
         limit_ch2_Y1 = (minamp_Ch2-0.5*abs(minamp_Ch2));
 %         limit_ch2_Y2 = (maxamp_Ch2Ca+0.1*abs(maxamp_Ch2Ca));
          limit_ch2_Y2 = (maxamp_Ch2+0.1);
-         limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
+         limit_ann = (minamp_Ch2-0.10*abs(minamp_Ch2));
         
         
         %text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
@@ -1132,7 +1132,7 @@ set(hdel_Rpeak,'ForegroundColor',[1 0 0]);
         limit_ch2_Y1 = (minamp_Ch2Rd-0.5*abs(minamp_Ch2Rd));
         %limit_ch2_Y2 = (maxamp_Ch2Rd+0.1*abs(maxamp_Ch2Rd));
         limit_ch2_Y2 = (maxamp_Ch2Rd+0.1);
-        limit_ann = (minamp_Ch2Rd-0.25*abs(minamp_Ch2Rd));
+        limit_ann = (minamp_Ch2Rd-0.10*abs(minamp_Ch2Rd));
       
         while ~stop_Rpeak_mk
             
@@ -1320,7 +1320,7 @@ set(hadd_Rpeak,'ForegroundColor',[1 0 0]);
                 set(picg,'Linewidth',1.5)                     
                 xlimit_1 = (Rpeak_indices(page_cur)/fs-0.05);
                 minamp_Ch2 =  min(icg((round(xlimit_1*fs)+1):end));
-                limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
+                limit_ann = (minamp_Ch2-0.10*abs(minamp_Ch2));
                 
                 text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
                 text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black')
@@ -1572,7 +1572,7 @@ hauto_Rpeak= uicontrol(hMainFigure, ...
         
         xlimit_1 = (Rpeak_indices(page_cur)/fs-0.05);
         minamp_Ch2 =  min(icg((round(xlimit_1*fs)+1):end));
-        limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
+        limit_ann = (minamp_Ch2-0.10*abs(minamp_Ch2));
             
         text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
         text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black')
@@ -1659,7 +1659,7 @@ set(hdel_Cpoint,'ForegroundColor',[0 0 0]);
 %        limit_ch2_Y2 = (maxamp_Ch2Cd+0.1*abs(maxamp_Ch2Cd));
         limit_ch2_Y2 = (maxamp_Ch2Cd+0.1);
 
-        limit_ann = (minamp_Ch2Cd-0.25*abs(minamp_Ch2Cd));
+        limit_ann = (minamp_Ch2Cd-0.10*abs(minamp_Ch2Cd));
         
         while~stop_Cpoint_mk
             set(tick_help,'String', 'Left click inside ICG plot to delete an incorrect C peak','background',color_help);
@@ -1869,7 +1869,7 @@ set(hadd_Cpoint,'String','<html>&#9651</html>');
     
                         xlimit_1 = (Rpeak_indices(page_cur)/fs-0.05);
                         minamp_Ch2 =  min(icg((round(xlimit_1*fs)+1):end));
-                        limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
+                        limit_ann = (minamp_Ch2-0.10*abs(minamp_Ch2));
                         
                         text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
                         text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black')
@@ -1999,7 +1999,7 @@ set(hauto_Cpoint,'String','<html> Auto &#9651</html>');
             
             xlimit_1 = (Rpeak_indices(page_cur)/fs-0.05);
             minamp_Ch2 =  min(icg((round(xlimit_1*fs)+1):end));
-            limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
+            limit_ann = (minamp_Ch2-0.10*abs(minamp_Ch2));
             
             text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
             text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black')
@@ -2161,7 +2161,7 @@ set(hdel_Bpoint,'ForegroundColor',[0 0 1]);
         limit_ch2_Y1 = (minamp_Ch2-0.5*abs(minamp_Ch2));
 %        limit_ch2_Y2 = (maxamp_Ch2+0.1*abs(maxamp_Ch2));
         limit_ch2_Y2 = (maxamp_Ch2+0.1);
-        limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
+        limit_ann = (minamp_Ch2-0.10*abs(minamp_Ch2));
 
         
         while~stop_Bpoint_mk
@@ -2287,7 +2287,7 @@ hauto_Bpoint = uicontrol(hMainFigure, ...
                     
                xlimit_1 = (Rpeak_indices(page_cur)/fs-0.05);
                minamp_Ch2 =  min(icg((round(xlimit_1*fs)+1):end));
-               limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
+               limit_ann = (minamp_Ch2-0.10*abs(minamp_Ch2));
                 
                     text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
                     text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black')
@@ -2463,7 +2463,7 @@ set(hadd_Bpoint,'ForegroundColor',[0 0 1]);
                 
                 xlimit_1 = (Rpeak_indices(page_cur)/fs-0.05);
                 minamp_Ch2 =  min(icg((round(xlimit_1*fs)+1):end));
-                limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
+                limit_ann = (minamp_Ch2-0.10*abs(minamp_Ch2));
                 
                 
                 text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
@@ -2588,7 +2588,7 @@ set(hdel_Xpoint,'ForegroundColor','magenta');    % brown color
         limit_ch1_Y2 = (maxamp_Ch1+0.5*abs(maxamp_Ch1));
         limit_ch2_Y1 = (minamp_Ch2-0.5*abs(minamp_Ch2));
         limit_ch2_Y2 = (maxamp_Ch2+0.1);
-        limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
+        limit_ann = (minamp_Ch2-0.10*abs(minamp_Ch2));
         
         while~stop_Xpoint_mk
             set(tick_help,'String', 'Left click inside ICG plot to delete an incorrect X point','background',color_help,'Foreground',color_help_txt);
@@ -2791,7 +2791,7 @@ set(hadd_Xpoint,'ForegroundColor','magenta');    % brown color
                     set(picg,'Linewidth',1.5)                   
                      xlimit_1 = (Rpeak_indices(page_cur)/fs-0.05);
                     minamp_Ch2 =  min(icg((round(xlimit_1*fs)+1):end));
-                    limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
+                    limit_ann = (minamp_Ch2-0.10*abs(minamp_Ch2));
                     text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
                     text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black')
                     text(hplotICG, t(Bpoint_indices),limit_ann*ones(1,length(Bpoint_indices)),'B','color','blue')
@@ -2941,7 +2941,7 @@ set(hauto_Xpoint,'ForegroundColor','magenta');    % brown color
             
             xlimit_1 = (Rpeak_indices(page_cur)/fs-0.05);
             minamp_Ch2 =  min(icg((round(xlimit_1*fs)+1):end));
-            limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
+            limit_ann = (minamp_Ch2-0.10*abs(minamp_Ch2));
 
             text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
             text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black')
@@ -3078,11 +3078,11 @@ set(hinflec_show, 'String', 'Show Inflection');    % for multi line button text
 
         xlimit_1 = (Rpeak_indices(page_cur)/fs-0.05);
         minamp_Ch2 =  min(icg((round(xlimit_1*fs)+1):end));
-        limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
+        limit_ann = (minamp_Ch2-0.10*abs(minamp_Ch2));
       
         text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
         text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black')
-        text(hplotICG, t(Bpoint_indices),limit_ann*ones(1,length(Bpoint_indices)),'B','color','magenta')
+        text(hplotICG, t(Bpoint_indices),limit_ann*ones(1,length(Bpoint_indices)),'B','color','blue')
         text(hplotICG, t(Xpoint_indices),limit_ann*ones(1,length(Xpoint_indices)),'X','color','magenta')
         
         set(hplotICG,'XLim',xlimit);
@@ -3216,7 +3216,7 @@ set(hinflec_clear, 'String', 'Clear Inflection');
         
         limit_ch2_Y1 = (minamp_Ch2Rd-0.5*abs(minamp_Ch2Rd));
         limit_ch2_Y2 = (maxamp_Ch2Rd+0.1);
-        limit_ann = (minamp_Ch2Rd-0.25*abs(minamp_Ch2Rd));
+        limit_ann = (minamp_Ch2Rd-0.10*abs(minamp_Ch2Rd));
         picg = plot(hplotICG,t,icg,'b-',...
             t(Rpeak_indices),icg(Rpeak_indices),'r+',...
             t(Cpoint_indices),icg(Cpoint_indices),'k^',...
