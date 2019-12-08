@@ -33,7 +33,7 @@ function varargout = ICMAA(varargin)
 %       the GNU (v3 or later) public license. See license file for
 %       more information
 
-% This file has been updated on Nov 7, 2019 by Shafa-at Ali Sheikh.
+% This file has been updated on Dec 7, 2019 by Shafa-at Ali Sheikh.
 
 
 %% Initializing variables
