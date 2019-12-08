@@ -122,7 +122,6 @@ Bnew_st_x = 0.885;
 Xnew_st_x = 0.935;
 
 
-
 %%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -206,9 +205,8 @@ set(hsel_record_folder, 'String', '<html> Select <br> Records Folder');    % for
         set(hplotICG, 'Position',[0.04    0.07    0.74   0.335])
         set(hECG_show,'Enable','off')
         set(hECG_hide,'Enable','Off')
-        set(hdisp_RC_feature,'Visible','Off')
-        set(hdisp_C_Shape,'Visible','Off')
-        set(hdisp_X_Shape,'Visible','Off')
+        set(hdisp_feature_types,'visible', 'off');
+        set(hdisp_RC_feature,'Visible','Off');set(hdisp_C_Shape,'Visible','Off');set(hdisp_X_Shape,'Visible','Off')
         
         % Setting enable off for all buttons on selecting the Record folder
         set(hadd_notes,'Enable','off'); set(hBeatNumEdit_page,'Enable','off')
@@ -429,6 +427,7 @@ tick_help = uicontrol(hMainFigure, ...
         
         set(hRC_pop, 'Value', 1);set(hC_pop,'value',1);set(hX_pop,'value',1);
         set(hRC_pop, 'Enable', 'off');set(hC_pop,'Enable', 'off');set(hX_pop,'Enable', 'off');
+        set(hdisp_feature_types,'visible', 'off');
         set(hdisp_RC_feature,'Visible','off'); set(hdisp_C_Shape,'Visible','Off');set(hdisp_X_Shape,'Visible','Off')
         ECG_hide_mk=0;
 
@@ -565,23 +564,23 @@ tick_help = uicontrol(hMainFigure, ...
                 % Camilo initialization of feature name reading from existing file
         % or initalizing to "Select Feature"
         
-        if exist( strcat(folder_path_manual,record_name,'_Feature','.txt') , 'file')
-            beatsFeature = dlmread( strcat(folder_path_manual,record_name,'_Feature','.txt') );
-        else
-            beatsFeature = ones(length(Rpeak_indices),1);               % Initializing to "Select Feature"    
-        end
-        
-        if exist( strcat(folder_path_manual,record_name,'_CShape','.txt') , 'file')
-            beatsCshape = dlmread( strcat(folder_path_manual,record_name,'_CShape','.txt') );
-        else
-            beatsCshape = 2.*ones(length(Rpeak_indices),1);               % Initializing to "Single Peak"    
-        end
-        
-        if exist( strcat(folder_path_manual,record_name,'_XShape','.txt') , 'file')
-            beatsXshape = dlmread( strcat(folder_path_manual,record_name,'_XShape','.txt') );
-        else
-            beatsXshape = ones(length(Rpeak_indices),1);               % Initializing to "Select X shape"    
-        end
+%         if exist( strcat(folder_path_manual,record_name,'_Feature','.txt') , 'file')
+%             beatsFeature = dlmread( strcat(folder_path_manual,record_name,'_Feature','.txt') );
+%         else
+%             beatsFeature = ones(length(Rpeak_indices),1);               % Initializing to "Select Feature"    
+%         end
+%         
+%         if exist( strcat(folder_path_manual,record_name,'_CShape','.txt') , 'file')
+%             beatsCshape = dlmread( strcat(folder_path_manual,record_name,'_CShape','.txt') );
+%         else
+%             beatsCshape = 2.*ones(length(Rpeak_indices),1);               % Initializing to "Single Peak"    
+%         end
+%         
+%         if exist( strcat(folder_path_manual,record_name,'_XShape','.txt') , 'file')
+%             beatsXshape = dlmread( strcat(folder_path_manual,record_name,'_XShape','.txt') );
+%         else
+%             beatsXshape = ones(length(Rpeak_indices),1);               % Initializing to "Select X shape"    
+%         end
         
         
         
@@ -642,16 +641,10 @@ tick_help = uicontrol(hMainFigure, ...
         
         picg = plot(hplotICG,t,icg,'b-',...
             t(Rpeak_indices),icg(Rpeak_indices),'r+',...
-            t(Cpoint_indices),icg(Cpoint_indices),'ro',...
+            t(Cpoint_indices),icg(Cpoint_indices),'k^',...
             t(Bpoint_indices),icg(Bpoint_indices),'bo',...
-            t(Xpoint_indices),icg(Xpoint_indices),'ko');
-        set(picg,'Linewidth',1.5)
-        
-        text(hplotICG, t(Rpeak_indices),icg(Rpeak_indices +20),'R','color','red')
-        text(hplotICG, t(Cpoint_indices),icg(Cpoint_indices+12),'C','color','red')
-        text(hplotICG, t(Bpoint_indices),icg(Bpoint_indices-15),'B','color','blue')
-        text(hplotICG, t(Xpoint_indices),icg(Xpoint_indices-25),'X')
-        
+            t(Xpoint_indices),icg(Xpoint_indices),'mx','MarkerSize',6);
+        set(picg,'Linewidth',1.5)    
         
         
         set(hplotECG,'XLim',xlimit);
@@ -666,7 +659,15 @@ tick_help = uicontrol(hMainFigure, ...
         limit_ch2_Y1 = (minamp_Ch2-0.5*abs(minamp_Ch2));
 %         limit_ch2_Y2 = (maxamp_Ch2Ca+0.1*abs(maxamp_Ch2Ca));
          limit_ch2_Y2 = (maxamp_Ch2+0.1);
+         limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
         
+        
+        %text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
+        text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
+       
+        text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black')
+        text(hplotICG, t(Bpoint_indices),limit_ann*ones(1,length(Bpoint_indices)),'B','color','blue')
+        text(hplotICG, t(Xpoint_indices),limit_ann*ones(1,length(Xpoint_indices)),'X','color','magenta')
         
         set(hplotICG,'XLim',xlimit);
         set(hplotICG,'YLim',[limit_ch2_Y1  limit_ch2_Y2]);
@@ -818,26 +819,48 @@ txt_timeaxes = uicontrol(hMainFigure, ...
     'background',[0.2 0.6 0.8]);
 
     function time_con(hObject, ~)
+        
+        
+         if exist( strcat(folder_path_manual,record_name,'_Feature','.txt') , 'file')
+            beatsFeature = dlmread( strcat(folder_path_manual,record_name,'_Feature','.txt') );
+        else
+            beatsFeature = ones(length(Rpeak_indices),1);               % Initializing to "Select Feature"    
+        end
+        
+        if exist( strcat(folder_path_manual,record_name,'_CShape','.txt') , 'file')
+            beatsCshape = dlmread( strcat(folder_path_manual,record_name,'_CShape','.txt') );
+        else
+            beatsCshape = 2.*ones(length(Rpeak_indices),1);               % Initializing to "Single Peak"    
+        end
+        
+        if exist( strcat(folder_path_manual,record_name,'_XShape','.txt') , 'file')
+            beatsXshape = dlmread( strcat(folder_path_manual,record_name,'_XShape','.txt') );
+        else
+            beatsXshape = ones(length(Rpeak_indices),1);               % Initializing to "Select X shape"    
+        end
+        
+        
+        
         contents = cellstr(get(hObject,'String'));
         timelim = contents{get(hObject,'Value')};
 
         if (strcmp(timelim,'Data Length'))
-            set(hdisp_RC_feature,'visible','off');
-            set(hdisp_C_Shape,'visible','off');
-            set(hdisp_X_Shape,'visible','off');
-            set(hRC_pop,'Enable','off');
-            set(hC_pop,'Enable', 'off');
-            set(hX_pop,'Enable', 'off');
-            set(hauto_Bpoint, 'Enable', 'off');
-                                                % parameter panel initialized
-            set(tick_segment1,'String','--');  
-            set(tick_RB_text,'String','--');
-            set(tick_RC_text,'String','--');
-            set(tick_BX_text,'String','--');
-            set(tick_beat_len_text,'String','--');
-            set(tick_Camp_text,'String','--');
-            set(tick_Bamp_text,'String','--');
-            set(tick_Xamp_text,'String','--');
+         
+        %  text for feature type made invisible
+             set(hdisp_feature_types,'visible', 'off');
+            set(hdisp_RC_feature,'visible','off');set(hdisp_C_Shape,'visible','off'); set(hdisp_X_Shape,'visible','off');
+        % pop up menus and inflection panel disabled
+            set(hRC_pop,'Enable','off'); set(hC_pop,'Enable', 'off');set(hX_pop,'Enable', 'off');    
+            set(hinflec_show,'Enable','off');
+        % ICG fiducial points disabled
+            set(hadd_Bpoint,'Enable', 'off'); set(hauto_Bpoint, 'Enable', 'off'); set(hdel_Bpoint, 'Enable', 'off');set(hstop_Bpoint,'Enable', 'off');
+            set(hadd_Xpoint,'Enable', 'off'); set(hdel_Xpoint,'Enable', 'off');set(hstop_Xpoint,'Enable', 'off');
+            set(hadd_Cpoint,'Enable', 'off'); set(hdel_Cpoint,'Enable', 'off');set(hstop_Cpoint, 'Enable', 'off');
+
+        % parameter panel initialized
+            set(tick_segment1,'String','--');set(tick_RB_text,'String','--');set(tick_RC_text,'String','--');
+            set(tick_BX_text,'String','--'); set(tick_beat_len_text,'String','--');set(tick_Camp_text,'String','--');
+            set(tick_Bamp_text,'String','--');set(tick_Xamp_text,'String','--');
             set(hcomp_param,'Enable','off');
                     
             seg_window = (length(ecg)/fs);
@@ -845,6 +868,7 @@ txt_timeaxes = uicontrol(hMainFigure, ...
             page_cur = page_num;                       % for "data length" page_cur = page_num
             limitX1 = (page_cur-1)*seg_window;
             limitX2 = (page_cur)*seg_window;
+            set(hinflec_show,'Enable','off');
             
         elseif(strcmp(timelim,'Beat Length'))
             Rpeak_indices = sort(Rpeak_indices);
@@ -852,9 +876,22 @@ txt_timeaxes = uicontrol(hMainFigure, ...
                 msgbox('Please annotate R peak for displaying ECG and ICG beat','Warning Window Name','warn');
                 set(htimeaxes_pop, 'value', 1);
                 timelim ='Data Length';
+        %  text for feature type made invisible
+                    set(hdisp_feature_types,'visible', 'off');
+                set(hdisp_RC_feature,'visible','off');set(hdisp_C_Shape,'visible','off'); set(hdisp_X_Shape,'visible','off');
+        % pop up menus and inflection panel disabled
+                set(hRC_pop,'Enable','off'); set(hC_pop,'Enable', 'off');set(hX_pop,'Enable', 'off');    
+                set(hinflec_show,'Enable','off');
+        % ICG fiducial points disabled
+                set(hadd_Bpoint,'Enable', 'off'); set(hauto_Bpoint, 'Enable', 'off'); set(hdel_Bpoint, 'Enable', 'off');set(hstop_Bpoint,'Enable', 'off');
+                set(hadd_Xpoint,'Enable', 'off'); set(hdel_Xpoint,'Enable', 'off');set(hstop_Xpoint,'Enable', 'off');
+                set(hadd_Cpoint,'Enable', 'off'); set(hdel_Cpoint,'Enable', 'off');set(hstop_Cpoint, 'Enable', 'off');
+
+        % parameter panel initialized
+                set(tick_segment1,'String','--');set(tick_RB_text,'String','--');set(tick_RC_text,'String','--');
+                set(tick_BX_text,'String','--'); set(tick_beat_len_text,'String','--');set(tick_Camp_text,'String','--');
+                set(tick_Bamp_text,'String','--');set(tick_Xamp_text,'String','--');
                 set(hcomp_param,'Enable','off');
-                set(hdisp_RC_feature,'visible','off');
-                set(hRC_pop,'Enable','off');
                
                 seg_window = (length(ecg)/fs);
                 page_num = ceil(time/seg_window);
@@ -864,18 +901,20 @@ txt_timeaxes = uicontrol(hMainFigure, ...
             else
                 seg_window = (length(ecg)/fs)/length(Rpeak_indices);          % change from IMAA
                 set(hcomp_param,'Enable','on');
+                set(hdisp_feature_types,'visible', 'on');
                 set(hdisp_RC_feature,'visible','on');
                 set(hRC_pop,'Enable','on');
                 RC_feat = cellstr(get(hRC_pop,'String'));
                 RC_feature = RC_feat{ beatsFeature(1)};
                 set(hdisp_RC_feature,'String',strcat('RC: ', RC_feature)) ;
-                set(hdisp_RC_feature, 'Position', [Cnew_st_x-1.8*w1    0.57    0.12  highButtons]);
+                set(hdisp_feature_types, 'Position', [Cnew_st_x-1.8*w1    0.64    0.12  highButtons])
+                set(hdisp_RC_feature, 'Position', [Cnew_st_x-1.8*w1    0.50    0.12  highButtons]);
 
                 
                 C_shp = cellstr(get(hC_pop,'String'));
                 C_shape = C_shp{ beatsCshape(1)};
                 set(hdisp_C_Shape,'String',strcat('C: ', C_shape));
-                set(hdisp_C_Shape, 'Position', [Cnew_st_x-1.8*w1    0.64    0.12  highButtons])
+                set(hdisp_C_Shape, 'Position', [Cnew_st_x-1.8*w1    0.57    0.12  highButtons])
 
                 X_shp = cellstr(get(hX_pop,'String'));
                 X_shape = X_shp{beatsXshape(1)};
@@ -886,21 +925,6 @@ txt_timeaxes = uicontrol(hMainFigure, ...
                 limitX2 = (page_cur)*seg_window;
                 set(hauto_Bpoint,'Enable','on');
             end
-
-            
-            if ECG_hide_mk                               % checking if ECG Hide is activated or not
-                set(hdisp_C_Shape,'visible','on');
-                set(hdisp_X_Shape,'visible','on');
-                set(hdisp_RC_feature,'visible','on');
-                set(hC_pop,'Enable','on');
-                set(hX_pop,'Enable', 'on');
-            else
-                set(hdisp_C_Shape,'visible','off');
-                set(hdisp_X_Shape,'visible','off');
-                set(hdisp_RC_feature,'visible','off');
-                set(hC_pop,'Enable','off');
-                set(hX_pop,'Enable', 'off');
-            end       
         elseif (strcmp(timelim,'RC Interval'))
             Rpeak_indices = sort(Rpeak_indices);
             Cpoint_indices = sort(Cpoint_indices);
@@ -923,13 +947,14 @@ txt_timeaxes = uicontrol(hMainFigure, ...
                 RC_feat = cellstr(get(hRC_pop,'String'));
                 RC_feature = RC_feat{ beatsFeature(1)};
                 set(hdisp_RC_feature,'String',strcat('RC: ', RC_feature)) ;
-                set(hdisp_RC_feature, 'Position', [Cnew_st_x-1.8*w1    0.20    0.12  highButtons])
+                set(hdisp_feature_types, 'Position', [Cnew_st_x-1.8*w1    0.27    0.12  highButtons])
+                set(hdisp_RC_feature, 'Position', [Cnew_st_x-1.8*w1    0.13    0.12  highButtons])
 
                 
                 C_shp = cellstr(get(hC_pop,'String'));
                 C_shape = C_shp{ beatsCshape(1)};
                 set(hdisp_C_Shape,'String',strcat('C: ', C_shape));
-                set(hdisp_C_Shape, 'Position', [Cnew_st_x-1.8*w1    0.27    0.12  highButtons])
+                set(hdisp_C_Shape, 'Position', [Cnew_st_x-1.8*w1    0.20    0.12  highButtons])
 
                 
                 set(hdisp_X_Shape,'visible','off');         % X shape, popoup menu and auto marker not required
@@ -942,21 +967,10 @@ txt_timeaxes = uicontrol(hMainFigure, ...
                 set(hdel_Xpoint,'Enable','off');set(hadd_Xpoint,'Enable','off');set(hstop_Xpoint,'Enable','off');
                 set(hauto_Xpoint,'Enable','off');
                 set(hauto_Bpoint,'Enable','on');
-            end
-            
-
-            
-            if ECG_hide_mk                               % checking if ECG Hide is activated or not
-                set(hdisp_C_Shape,'visible','on');
-                set(hdisp_RC_feature,'visible','on');
-                set(hC_pop,'Enable','on');
-            else
-                set(hdisp_C_Shape,'visible','off');
-                set(hdisp_RC_feature,'visible','off');  
-                set(hC_pop,'Enable','off');
-            end
-                                             
+            end                                        
         end
+                 
+        
         set(hBeatNumEdit_page,'Value',page_cur);
         set(tick_segment, 'String',num2str(page_cur));
         set(tick_segment,'ForegroundColor',[1 0 0]);
@@ -1005,30 +1019,15 @@ txt_timeaxes = uicontrol(hMainFigure, ...
             set(hBeatNumEdit_page,'Max',page_num+1);
             set(hBeatNumEdit_page,'SliderStep',[1/(page_num),1/(page_num-1) + 0.1]);
         end
-        
+        if (strcmp(timelim,'Data Length'))
+            set(tick_segment1,'String','--');
+        else
+            set(tick_segment1, 'String',num2str(page_cur));
+        end
+
+
         inflec_clear;                                   % clearing inflection on changing time settings
-        
-% % %         % Camilo initialization of feature name reading from existing file
-% % %         % or initalizing to "Select Feature"
-% % %         
-% % %         if exist( strcat(folder_path_manual,record_name,'_Feature','.txt') , 'file')
-% % %             beatsFeature = dlmread( strcat(folder_path_manual,record_name,'_Feature','.txt') );
-% % %         else
-% % %             beatsFeature = ones(length(Rpeak_indices),1);               % Initializing to "Select Feature"    
-% % %         end
-% % %         
-% % %         if exist( strcat(folder_path_manual,record_name,'_CShape','.txt') , 'file')
-% % %             beatsCshape = dlmread( strcat(folder_path_manual,record_name,'_CShape','.txt') );
-% % %         else
-% % %             beatsCshape = 2.*ones(length(Rpeak_indices),1);               % Initializing to "Single Peak"    
-% % %         end
-% % %         
-% % %         if exist( strcat(folder_path_manual,record_name,'_XShape','.txt') , 'file')
-% % %             beatsXshape = dlmread( strcat(folder_path_manual,record_name,'_XShape','.txt') );
-% % %         else
-% % %             beatsXshape = ones(length(Rpeak_indices),1);               % Initializing to "Select X shape"    
-% % %         end
-        
+       
     end
 
 
@@ -1133,7 +1132,8 @@ set(hdel_Rpeak,'ForegroundColor',[1 0 0]);
         limit_ch2_Y1 = (minamp_Ch2Rd-0.5*abs(minamp_Ch2Rd));
         %limit_ch2_Y2 = (maxamp_Ch2Rd+0.1*abs(maxamp_Ch2Rd));
         limit_ch2_Y2 = (maxamp_Ch2Rd+0.1);
-        
+        limit_ann = (minamp_Ch2Rd-0.25*abs(minamp_Ch2Rd));
+      
         while ~stop_Rpeak_mk
             
             
@@ -1143,35 +1143,29 @@ set(hdel_Rpeak,'ForegroundColor',[1 0 0]);
             pause(timer)
             if ~stop_Rpeak_mk
                 
-                set(tick_help,'String', '','background',[0 0 0]);
-                
-                
-                
+                set(tick_help,'String', '','background',[0 0 0]);              
                 if ~isempty(Rpeak_indices) &&...
                         (xt>=limitX1 && xt<=limitX2) && (yt>=limit_ch1_Y1  && yt<=limit_ch1_Y2)  % checking if click is in the figure
                     
                     [~, bb]=min(abs(Rpeak_indices-xt*fs));
                     selectedBeat = Rpeak_indices(bb);
-                    cur_indx=find(Rpeak_txt_data(:,1)==selectedBeat,1);
-                    
-                    
+                    cur_indx=find(Rpeak_txt_data(:,1)==selectedBeat,1);                
                     Rpeak_txt_data(cur_indx,:)=[];
                     Rpeak_indices = Rpeak_txt_data(:,1);
-                    
-                    
                     pecg = plot(hplotECG,t,ecg,'b-',t(Rpeak_indices),ecg(Rpeak_indices),'r+');
                     set(pecg,'Linewidth',1.5)
                     picg = plot(hplotICG,...
                         t,icg,'b-',...
                         t(Rpeak_indices),icg(Rpeak_indices),'r+',...
-                        t(Cpoint_indices),icg(Cpoint_indices),'ro',...
+                        t(Cpoint_indices),icg(Cpoint_indices),'k^',...
                         t(Bpoint_indices),icg(Bpoint_indices),'bo',...
-                        t(Xpoint_indices),icg(Xpoint_indices),'ko');
-                    set(picg,'Linewidth',1.5)
-                    text(hplotICG, t(Rpeak_indices),icg(Rpeak_indices +20),'R','color','red')
-                    text(hplotICG, t(Cpoint_indices),icg(Cpoint_indices+12),'C','color','red')
-                    text(hplotICG, t(Bpoint_indices),icg(Bpoint_indices-15),'B', 'color','blue')
-                    text(hplotICG, t(Xpoint_indices),icg(Xpoint_indices-25),'X')
+                        t(Xpoint_indices),icg(Xpoint_indices),'mx','MarkerSize',6);
+                    set(picg,'Linewidth',1.5)                     
+
+                    text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
+                    text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black')
+                    text(hplotICG, t(Bpoint_indices),limit_ann*ones(1,length(Bpoint_indices)),'B', 'color','blue')
+                    text(hplotICG, t(Xpoint_indices),limit_ann*ones(1,length(Xpoint_indices)),'X','color','magenta')
                    
                     
                     set(hplotECG,'XLim',xlimit);
@@ -1320,14 +1314,18 @@ set(hadd_Rpeak,'ForegroundColor',[1 0 0]);
                 
                 picg = plot(hplotICG,t,icg,'b-',...
                     t(Rpeak_indices),icg(Rpeak_indices),'r+',...
-                    t(Cpoint_indices),icg(Cpoint_indices),'ro',...
+                    t(Cpoint_indices),icg(Cpoint_indices),'k^',...
                     t(Bpoint_indices),icg(Bpoint_indices),'bo',...
-                    t(Xpoint_indices),icg(Xpoint_indices),'ko');
-                set(picg,'Linewidth',1.5)
-                text(hplotICG, t(Rpeak_indices),icg(Rpeak_indices +20),'R','color','red')
-                text(hplotICG, t(Cpoint_indices),icg(Cpoint_indices+12),'C','color','red')
-                text(hplotICG, t(Bpoint_indices),icg(Bpoint_indices-15),'B','color','blue')
-                text(hplotICG, t(Xpoint_indices),icg(Xpoint_indices-25),'X')
+                    t(Xpoint_indices),icg(Xpoint_indices),'mx','MarkerSize',6);
+                set(picg,'Linewidth',1.5)                     
+                xlimit_1 = (Rpeak_indices(page_cur)/fs-0.05);
+                minamp_Ch2 =  min(icg((round(xlimit_1*fs)+1):end));
+                limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
+                
+                text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
+                text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black')
+                text(hplotICG, t(Bpoint_indices),limit_ann*ones(1,length(Bpoint_indices)),'B','color','blue')
+                text(hplotICG, t(Xpoint_indices),limit_ann*ones(1,length(Xpoint_indices)),'X','color','magenta')
                 
                 set(hplotECG,'XLim',xlimit);
                 set(hplotECG,'YLim',[limit_ch1_Y1  limit_ch1_Y2]);
@@ -1372,20 +1370,15 @@ set(hstop_Rpeak,'ForegroundColor',[1 0 0]);
         set(hdisp_data_ECG,'Visible','off');       
         set(tick_help,'String', '','background',[0 0 0]);
         
-        set(hdel_Rpeak,'Enable','on');set(hadd_Rpeak,'Enable','on');set(hstop_Rpeak,'Enable','off');
-        set(hdel_Cpoint,'Enable','on');set(hadd_Cpoint,'Enable','on');set(hstop_Cpoint,'Enable','off');
-        set(hdel_Bpoint,'Enable','on');set(hadd_Bpoint,'Enable','on');set(hstop_Bpoint,'Enable','off');
-        set(hauto_Cpoint,'Enable','on');
-        set(hauto_Rpeak,'Enable','on')
-        set(hauto_Xpoint,'Enable','on');
+        set(hdel_Rpeak,'Enable','on');set(hadd_Rpeak,'Enable','on');set(hauto_Rpeak,'Enable','on');
+        set(hstop_Rpeak,'Enable','off');
+        set(hdel_Cpoint,'Enable','off');set(hadd_Cpoint,'Enable','off');set(hauto_Cpoint,'Enable','on');
+        set(hstop_Cpoint,'Enable','off');
+        set(hdel_Bpoint,'Enable','off');set(hadd_Bpoint,'Enable','off');set(hauto_Bpoint,'Enable','off');
+        set(hstop_Bpoint,'Enable','off');
+         set(hdel_Xpoint,'Enable','off');set(hadd_Xpoint,'Enable','off');set(hauto_Xpoint,'Enable','on');
+         set(hstop_Xpoint,'Enable','off');
 
-        
-        
-        if (strcmp(timelim,'RC Interval'))
-            set(hdel_Xpoint,'Enable','off');set(hadd_Xpoint,'Enable','off');set(hstop_Xpoint,'Enable','off');
-        else
-            set(hdel_Xpoint,'Enable','on');set(hadd_Xpoint,'Enable','on');set(hstop_Xpoint,'Enable','off')
-        end
     end
 
 hauto_Rpeak= uicontrol(hMainFigure, ...
@@ -1558,7 +1551,7 @@ hauto_Rpeak= uicontrol(hMainFigure, ...
             rethrow(ME);
             for enb=1:length(ME.stack); disp(ME.stack(enb)); end
             qrs_pos = [1 10 20]; sign = 1; en_thres = 0.5;
-        end
+            end
         dumy= zeros(length(qrs_pos),1);     % dummy zeros column required for IMAA
         Rpeak_txt_data = [qrs_pos' dumy];
         
@@ -1572,14 +1565,19 @@ hauto_Rpeak= uicontrol(hMainFigure, ...
         
         picg = plot(hplotICG,t,icg,'b-',...
             t(Rpeak_indices),icg(Rpeak_indices),'r+',...
-            t(Cpoint_indices),icg(Cpoint_indices),'ro',...
+            t(Cpoint_indices),icg(Cpoint_indices),'k^',...
             t(Bpoint_indices),icg(Bpoint_indices),'bo',...
-            t(Xpoint_indices),icg(Xpoint_indices),'ko');
-        set(picg,'Linewidth',1.5)
-        text(hplotICG, t(Rpeak_indices),icg(Rpeak_indices +20),'R','color','red')
-        text(hplotICG, t(Cpoint_indices),icg(Cpoint_indices+12),'C','color','red')
-        text(hplotICG, t(Bpoint_indices),icg(Bpoint_indices-15),'B','color','blue')
-        text(hplotICG, t(Xpoint_indices),icg(Xpoint_indices-25),'X')
+            t(Xpoint_indices),icg(Xpoint_indices),'mx','MarkerSize',6);
+        set(picg,'Linewidth',1.5)                    
+        
+        xlimit_1 = (Rpeak_indices(page_cur)/fs-0.05);
+        minamp_Ch2 =  min(icg((round(xlimit_1*fs)+1):end));
+        limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
+            
+        text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
+        text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black')
+        text(hplotICG, t(Bpoint_indices),limit_ann*ones(1,length(Bpoint_indices)),'B','color','blue')
+        text(hplotICG, t(Xpoint_indices),limit_ann*ones(1,length(Xpoint_indices)),'X','color','magenta')
         
         set(hdel_Cpoint,'Enable','off');set(hadd_Cpoint,'Enable','off'),set(hstop_Cpoint,'Enable','off');
         set(hauto_Cpoint,'Enable','on');
@@ -1623,7 +1621,7 @@ hdel_Cpoint = uicontrol(hMainFigure, ...
     'TooltipString', ['To delete C point from', newline, ...
     'ICG plot'],...
     'Callback', @del_Cpoint);
-set(hdel_Cpoint,'ForegroundColor',[1 0 0]);
+set(hdel_Cpoint,'ForegroundColor',[0 0 0]);
 
     function del_Cpoint(~, ~)
         stop_Cpoint_mk = 0;
@@ -1637,9 +1635,7 @@ set(hdel_Cpoint,'ForegroundColor',[1 0 0]);
         set(hauto_Bpoint,'Enable','off');
         set(hdel_Xpoint,'Enable','off');set(hadd_Xpoint,'Enable','off'),set(hstop_Xpoint,'Enable','off');
         set(hauto_Xpoint,'Enable','off');
-
-
-        
+     
         
         
         if (strcmp(timelim,'RC Interval'))
@@ -1663,6 +1659,7 @@ set(hdel_Cpoint,'ForegroundColor',[1 0 0]);
 %        limit_ch2_Y2 = (maxamp_Ch2Cd+0.1*abs(maxamp_Ch2Cd));
         limit_ch2_Y2 = (maxamp_Ch2Cd+0.1);
 
+        limit_ann = (minamp_Ch2Cd-0.25*abs(minamp_Ch2Cd));
         
         while~stop_Cpoint_mk
             set(tick_help,'String', 'Left click inside ICG plot to delete an incorrect C peak','background',color_help);
@@ -1692,14 +1689,15 @@ set(hdel_Cpoint,'ForegroundColor',[1 0 0]);
                     
                     picg = plot(hplotICG,t,icg,'b-',...
                         t(Rpeak_indices),icg(Rpeak_indices),'r+',...
-                        t(Cpoint_indices),icg(Cpoint_indices),'ro',...
+                        t(Cpoint_indices),icg(Cpoint_indices),'k^',...
                         t(Bpoint_indices),icg(Bpoint_indices),'bo',...
-                        t(Xpoint_indices),icg(Xpoint_indices),'ko');
-                    set(picg,'Linewidth',1.5);
-                    text(hplotICG, t(Rpeak_indices),icg(Rpeak_indices +20),'R','color','red');
-                    text(hplotICG, t(Cpoint_indices),icg(Cpoint_indices+12),'C','color','red');
-                    text(hplotICG, t(Bpoint_indices),icg(Bpoint_indices-15),'B','color','blue');
-                    text(hplotICG, t(Xpoint_indices),icg(Xpoint_indices-25),'X');
+                        t(Xpoint_indices),icg(Xpoint_indices),'mx','MarkerSize',6);
+                    set(picg,'Linewidth',1.5)                    
+
+                    text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red');
+                    text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black');
+                    text(hplotICG, t(Bpoint_indices),limit_ann*ones(1,length(Bpoint_indices)),'B','color','blue');
+                    text(hplotICG, t(Xpoint_indices),limit_ann*ones(1,length(Xpoint_indices)),'X','color','magenta');
                     
                     
                     set(hplotECG,'XLim',xlimit);
@@ -1733,17 +1731,19 @@ hadd_Cpoint = uicontrol(hMainFigure, ...
     'HandleVisibility', 'callback', ...
     'Units', 'normalized',...
     'Position', [Cnew_st_x   yPositionButtonsOnset-2.8*highButtons+0.03    widthButtons    highButtons], ...
-    'String', 'o', ...
-    'fontsize',16,...
+    'fontsize',10,...
     'Enable','Off',...
     'TooltipString', ['To manually add C points', newline, ...
     'on ICG plot'],...
     'Callback', @add_Cpoint);
 set(hadd_Cpoint,'ForegroundColor',[1 0 0]);
 
+set(hadd_Cpoint,'String','<html>&#9651</html>');
+
     function add_Cpoint(~, ~)
         stop_Cpoint_mk = 0;
-        set(hdisp_data_ICG, 'string','ICG Amplitude')
+        set(hdisp_data_ICG, 'string','ICG Amplitude')   % 'String', '*', ...
+
         set(hdisp_data_ICG,'Visible','on');
         
         set(hinflec_show,'Enable','off');set(hinflec_clear,'Enable','Off')
@@ -1780,7 +1780,7 @@ set(hadd_Cpoint,'ForegroundColor',[1 0 0]);
         
         set(tick_help,'String', 'Use mouse to drag line inside ICG plot and "Shift + Left click" on highest point in a beat to mark a C point','background',color_help,'Foreground',color_help_txt);
         C_line =  line(hplotICG, [mean(xlimit) mean(xlimit)], [limit_ch2_Y1 limit_ch2_Y2], ...
-            'color' , 'red', ...
+            'color' , 'black', ...
             'LineStyle', '-',...
             'linewidth', 1, ...
             'visible', 'on',...
@@ -1862,14 +1862,19 @@ set(hadd_Cpoint,'ForegroundColor',[1 0 0]);
 
                         picg = plot(hplotICG,t,icg,'b-',...
                             t(Rpeak_indices),icg(Rpeak_indices),'r+',...
-                            t(Cpoint_indices),icg(Cpoint_indices),'ro',...
+                            t(Cpoint_indices),icg(Cpoint_indices),'k^',...
                             t(Bpoint_indices),icg(Bpoint_indices),'bo',...
-                            t(Xpoint_indices),icg(Xpoint_indices),'ko');
-                        set(picg,'Linewidth',1.5)
-                        text(hplotICG, t(Rpeak_indices),icg(Rpeak_indices +20),'R','color','red')
-                        text(hplotICG, t(Cpoint_indices),icg(Cpoint_indices+12),'C','color','red')
-                        text(hplotICG, t(Bpoint_indices),icg(Bpoint_indices-15),'B','color','blue')
-                        text(hplotICG, t(Xpoint_indices),icg(Xpoint_indices-25),'X')
+                            t(Xpoint_indices),icg(Xpoint_indices),'mx','MarkerSize',6);
+                        set(picg,'Linewidth',1.5);                   
+    
+                        xlimit_1 = (Rpeak_indices(page_cur)/fs-0.05);
+                        minamp_Ch2 =  min(icg((round(xlimit_1*fs)+1):end));
+                        limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
+                        
+                        text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
+                        text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black')
+                        text(hplotICG, t(Bpoint_indices),limit_ann*ones(1,length(Bpoint_indices)),'B','color','blue')
+                        text(hplotICG, t(Xpoint_indices),limit_ann*ones(1,length(Xpoint_indices)),'X','color','magenta')
                     
                     
                     
@@ -1912,7 +1917,7 @@ hstop_Cpoint = uicontrol(hMainFigure, ...
     'of C point'],...
     'Callback', @stop_Cpoint);
 
-set(hstop_Cpoint,'ForegroundColor',[1 0 0]);
+set(hstop_Cpoint,'ForegroundColor',[0 0 0]);
 
 
     function stop_Cpoint(~, ~)
@@ -1936,26 +1941,32 @@ set(hstop_Cpoint,'ForegroundColor',[1 0 0]);
         set(hauto_Xpoint,'Enable','on');
 
         if (strcmp(timelim,'RC Interval'))
-            set(hdel_Xpoint,'Enable','off');set(hadd_Xpoint,'Enable','off');set(hstop_Xpoint,'Enable','off');
+            set(hdel_Xpoint,'Enable','off');set(hadd_Xpoint,'Enable','off');set(hauto_Xpoint,'Enable','off');set(hstop_Xpoint,'Enable','off');
         else
-            set(hdel_Xpoint,'Enable','on');set(hadd_Xpoint,'Enable','on');set(hstop_Xpoint,'Enable','off')
+            set(hdel_Xpoint,'Enable','on');set(hadd_Xpoint,'Enable','on');set(hauto_Xpoint,'Enable','on');set(hstop_Xpoint,'Enable','off')
         end
         
-        
+         if (strcmp(timelim,'Data Length'))
+             set(hauto_Bpoint, 'Enable', 'off');
+         else
+              set(hauto_Bpoint, 'Enable', 'on');
+         end
+                     
     end
 hauto_Cpoint = uicontrol(hMainFigure, ...
     'Style', 'pushbutton', ...?% can changed text
     'HandleVisibility', 'callback', ...
     'Units', 'normalized',...
     'Position', [Cnew_st_x   yPositionButtonsOnset-4.8*highButtons+0.03    widthButtons    highButtons], ...
-    'String', 'Auto O', ...
     'TooltipString', ['To automatically add C points', newline, ...
     'on ICG plot'],...
     'fontsize',10,...
     'Enable','off',...
     'Callback', @add_autoCpoint);
+%     'String', 'Auto *', ...
 
 set(hauto_Cpoint,'ForegroundColor',[1 0 0]);
+set(hauto_Cpoint,'String','<html> Auto &#9651</html>');
 
     function add_autoCpoint(~,~)
         
@@ -1981,14 +1992,19 @@ set(hauto_Cpoint,'ForegroundColor',[1 0 0]);
             set(pecg,'Linewidth',1.5)
             picg = plot(hplotICG,t,icg,'b-',...
                 t(Rpeak_indices),icg(Rpeak_indices),'r+',...
-                t(Cpoint_indices),icg(Cpoint_indices),'ro',...
+                t(Cpoint_indices),icg(Cpoint_indices),'k^',...
                 t(Bpoint_indices),icg(Bpoint_indices),'bo',...
-                t(Xpoint_indices),icg(Xpoint_indices),'ko');
-            set(picg,'Linewidth',1.5)
-            text(hplotICG, t(Rpeak_indices),icg(Rpeak_indices +20),'R','color','red')
-            text(hplotICG, t(Cpoint_indices),icg(Cpoint_indices+12),'C','color','red')
-            text(hplotICG, t(Bpoint_indices),icg(Bpoint_indices-15),'B','color','blue')
-            text(hplotICG, t(Xpoint_indices),icg(Xpoint_indices-25),'X')
+                t(Xpoint_indices),icg(Xpoint_indices),'mx','MarkerSize',6);
+            set(picg,'Linewidth',1.5)   
+            
+            xlimit_1 = (Rpeak_indices(page_cur)/fs-0.05);
+            minamp_Ch2 =  min(icg((round(xlimit_1*fs)+1):end));
+            limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
+            
+            text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
+            text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black')
+            text(hplotICG, t(Bpoint_indices),limit_ann*ones(1,length(Bpoint_indices)),'B','color','blue')
+            text(hplotICG, t(Xpoint_indices),limit_ann*ones(1,length(Xpoint_indices)),'X','color','magenta')
         end
     end
 
@@ -1996,8 +2012,21 @@ set(hauto_Cpoint,'ForegroundColor',[1 0 0]);
 %-------------------------RC feature Pop up button----------------------
 
 %yPositionButtonsOnset-11.15*highButtons+0.02
+hdisp_feature_types = uicontrol(hMainFigure, ...              % top right corner of ICG
+    'Style', 'text', ...?% can changed text
+    'HandleVisibility', 'callback', ...
+    'Units', 'normalized',...
+    'Position', [Cnew_st_x-1.8*w1    0.64    0.12  highButtons], ...
+    'String', 'Feature Types ',...
+    'fontweight','bold',...
+    'Visible', 'Off',...
+    'fontsize',fontsize12);
+set(hdisp_feature_types,'backgroundcolor',get(hplotICG,'color'))     % transparent text box
 
-hdisp_RC_feature = uicontrol(hMainFigure, ...
+
+
+
+hdisp_RC_feature = uicontrol(hMainFigure, ...              % top right corner of ICG
     'Style', 'text', ...?% can changed text
     'HandleVisibility', 'callback', ...
     'Units', 'normalized',...
@@ -2028,26 +2057,40 @@ hRC_pop = uicontrol(hMainFigure, ...          % popup menu for "RC features"
             RC_feature = 'Select RC feature';
         elseif (strcmp(RC_feat,'Inflection'))
             RC_feature = 'Inflection';
+            inflec_show;
         elseif (strcmp(RC_feat,'Mild inflection'))
-            RC_feature = 'Mild infection';
+            RC_feature = 'Mild inflection';
+            inflec_show;
         elseif (strcmp(RC_feat,'Plateau'))
             RC_feature = 'Plateau';
+            inflec_show;
         elseif (strcmp(RC_feat,'Notch'))
             RC_feature = 'Notch';
+            inflec_clear
+            add_Bpoint;
         elseif (strcmp(RC_feat,'Change in the gradient'))
             RC_feature = 'Change in the gradient';
+            inflec_clear;
+            add_Bpoint;
         elseif (strcmp(RC_feat,'Valley'))
             RC_feature = 'Valley';
+            inflec_clear;
+            add_Bpoint;
         elseif (strcmp(RC_feat,'Corner'))
             RC_feature = 'Corner';
+            inflec_clear;
+            add_Bpoint;
         elseif (strcmp(RC_feat,'Featureless'))
             RC_feature = 'Featureless';
+            add_autoBpoint;
+            stop_Bpoint;
         elseif (strcmp(RC_feat,'Other - notes added'))
             RC_feature = 'Other - notes added';
         elseif (strcmp(RC_feat,'Invalid or Noisy'))
             RC_feature = 'Invalid or Noisy';
-        elseif (strcmp(RC_feat,'Onset of the Rise'))
-            RC_feature = 'Onset of the Rise';
+        elseif (strcmp(RC_feat,'Onset of the rise'))
+            RC_feature = 'Onset of the rise';
+            add_Bpoint;
         end
                 % camilo
         beatsFeature( page_cur )  = get(hRC_pop, 'Value');
@@ -2117,7 +2160,9 @@ set(hdel_Bpoint,'ForegroundColor',[0 0 1]);
         limit_ch1_Y2 = (maxamp_Ch1+0.5*abs(maxamp_Ch1));
         limit_ch2_Y1 = (minamp_Ch2-0.5*abs(minamp_Ch2));
 %        limit_ch2_Y2 = (maxamp_Ch2+0.1*abs(maxamp_Ch2));
-      limit_ch2_Y2 = (maxamp_Ch2+0.1);
+        limit_ch2_Y2 = (maxamp_Ch2+0.1);
+        limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
+
         
         while~stop_Bpoint_mk
             set(tick_help,'String', 'Left click inside ICG plot to delete an incorrect B point','background',color_help,'Foreground',color_help_txt);
@@ -2146,14 +2191,14 @@ set(hdel_Bpoint,'ForegroundColor',[0 0 1]);
                     
                     picg = plot(hplotICG,t,icg,'b-',...
                         t(Rpeak_indices),icg(Rpeak_indices),'r+',...
-                        t(Cpoint_indices),icg(Cpoint_indices),'ro',...
+                        t(Cpoint_indices),icg(Cpoint_indices),'k^',...
                         t(Bpoint_indices),icg(Bpoint_indices),'bo',...
-                        t(Xpoint_indices),icg(Xpoint_indices),'ko');
-                    set(picg,'Linewidth',1.5)
-                    text(hplotICG, t(Rpeak_indices),icg(Rpeak_indices +20),'R','color','red')
-                    text(hplotICG, t(Cpoint_indices),icg(Cpoint_indices+12),'C','color','red')
-                    text(hplotICG, t(Bpoint_indices),icg(Bpoint_indices-15),'B','color','blue')
-                    text(hplotICG, t(Xpoint_indices),icg(Xpoint_indices-25),'X')
+                        t(Xpoint_indices),icg(Xpoint_indices),'mx','MarkerSize',6);
+                    set(picg,'Linewidth',1.5)                    
+                    text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
+                    text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black')
+                    text(hplotICG, t(Bpoint_indices),limit_ann*ones(1,length(Bpoint_indices)),'B','color','blue')
+                    text(hplotICG, t(Xpoint_indices),limit_ann*ones(1,length(Xpoint_indices)),'X','color','magenta')
                     
                     
                     
@@ -2235,14 +2280,19 @@ hauto_Bpoint = uicontrol(hMainFigure, ...
                 set(pecg,'Linewidth',1.5);
                 picg = plot(hplotICG,t,icg,'b-',...
                         t(Rpeak_indices),icg(Rpeak_indices),'r+',...
-                        t(Cpoint_indices),icg(Cpoint_indices),'ro',...
+                        t(Cpoint_indices),icg(Cpoint_indices),'k^',...
                         t(Bpoint_indices),icg(Bpoint_indices),'bo',...
-                        t(Xpoint_indices),icg(Xpoint_indices),'ko');
-                    set(picg,'Linewidth',1.5)
-                    text(hplotICG, t(Rpeak_indices),icg(Rpeak_indices +20),'R','color','red')
-                    text(hplotICG, t(Cpoint_indices),icg(Cpoint_indices+12),'C','color','red')
-                    text(hplotICG, t(Bpoint_indices),icg(Bpoint_indices-15),'B','color','blue')
-                    text(hplotICG, t(Xpoint_indices),icg(Xpoint_indices-25),'X')
+                        t(Xpoint_indices),icg(Xpoint_indices),'mx','MarkerSize',6);
+                    set(picg,'Linewidth',1.5)  
+                    
+               xlimit_1 = (Rpeak_indices(page_cur)/fs-0.05);
+               minamp_Ch2 =  min(icg((round(xlimit_1*fs)+1):end));
+               limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
+                
+                    text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
+                    text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black')
+                    text(hplotICG, t(Bpoint_indices),limit_ann*ones(1,length(Bpoint_indices)),'B','color','blue')
+                    text(hplotICG, t(Xpoint_indices),limit_ann*ones(1,length(Xpoint_indices)),'X','color','magenta')
                 
         if (strcmp(timelim,'RC Interval'))
             limitX1 = (Rpeak_indices(page_cur)/fs-0.05);
@@ -2359,9 +2409,9 @@ set(hadd_Bpoint,'ForegroundColor',[0 0 1]);
                 
                 set(hdisp_data_ICG, 'string', ['ICG amp:' num2str(icg_mag_B)]); % update text for ICG amplitude
                 if (Bpt_x_line_index>=Rpeak_indices(page_cur)) && (Bpt_x_line_index<=Cpoint_indices(page_cur))
-                    set(hdisp_derivative_ICG, 'string', ['Zero Crossing Sign:' num2str(icg_der_sign)])
+                    set(hdisp_derivative_ICG, 'string', ['Zero Crossing Sign (--):' num2str(icg_der_sign)])
                 else
-                    set(hdisp_derivative_ICG, 'string', ['Zero Crossing Sign:' 'NaN'])
+                    set(hdisp_derivative_ICG, 'string', ['Zero Crossing Sign (--):' 'NaN'])
                 end
             else
                 set(hMainFigure, 'WindowButtonMotionFcn', '');
@@ -2406,14 +2456,20 @@ set(hadd_Bpoint,'ForegroundColor',[0 0 1]);
 
                 picg = plot(hplotICG,t,icg,'b-',...
                         t(Rpeak_indices),icg(Rpeak_indices),'r+',...
-                        t(Cpoint_indices),icg(Cpoint_indices),'ro',...
+                        t(Cpoint_indices),icg(Cpoint_indices),'k^',...
                         t(Bpoint_indices),icg(Bpoint_indices),'bo',...
-                        t(Xpoint_indices),icg(Xpoint_indices),'ko');
-                set(picg,'Linewidth',1.5)
-                text(hplotICG, t(Rpeak_indices),icg(Rpeak_indices +20),'R','color','red')
-                text(hplotICG, t(Cpoint_indices),icg(Cpoint_indices+12),'C','color','red')
-                text(hplotICG, t(Bpoint_indices),icg(Bpoint_indices-15),'B','color','blue')
-                text(hplotICG, t(Xpoint_indices),icg(Xpoint_indices-25),'X')
+                        t(Xpoint_indices),icg(Xpoint_indices),'mx','MarkerSize',6);
+                set(picg,'Linewidth',1.5)                    
+                
+                xlimit_1 = (Rpeak_indices(page_cur)/fs-0.05);
+                minamp_Ch2 =  min(icg((round(xlimit_1*fs)+1):end));
+                limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
+                
+                
+                text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
+                text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black')
+                text(hplotICG, t(Bpoint_indices),limit_ann*ones(1,length(Bpoint_indices)),'B','color','blue')
+                text(hplotICG, t(Xpoint_indices),limit_ann*ones(1,length(Xpoint_indices)),'X','color','magenta')
                                 
                 set(hplotICG,'XLim',xlimit);
                 set(hplotICG,'YLim',[limit_ch2_Y1  limit_ch2_Y2]);
@@ -2461,6 +2517,14 @@ set(hstop_Bpoint,'ForegroundColor',[0 0 1]);
             set(hauto_Rpeak,'Enable','on');
         end
         inflec_clear
+        set(hauto_Cpoint,'Enable','on');
+        
+        if (strcmp(timelim,'RC Interval'))
+            set(hauto_Xpoint,'Enable','off');
+        else
+            set(hauto_Xpoint,'Enable','on');
+        end
+            
         set(tick_help,'String', '','background',[0 0 0]);
     end
 
@@ -2485,7 +2549,7 @@ hdel_Xpoint = uicontrol(hMainFigure, ...
     'TooltipString', ['To delete X point from', newline, ...
     'ICG plot'],...
     'Callback', @del_Xpoint);
-set(hdel_Xpoint,'ForegroundColor',[0 0 0]);
+set(hdel_Xpoint,'ForegroundColor','magenta');    % brown color
 
     function del_Xpoint(~, ~)
         
@@ -2523,8 +2587,8 @@ set(hdel_Xpoint,'ForegroundColor',[0 0 0]);
         limit_ch1_Y1 = (minamp_Ch1-1*abs(minamp_Ch1));
         limit_ch1_Y2 = (maxamp_Ch1+0.5*abs(maxamp_Ch1));
         limit_ch2_Y1 = (minamp_Ch2-0.5*abs(minamp_Ch2));
-        %         limit_ch2_Y2 = (maxamp_Ch2+0.1*abs(maxamp_Ch2));
         limit_ch2_Y2 = (maxamp_Ch2+0.1);
+        limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
         
         while~stop_Xpoint_mk
             set(tick_help,'String', 'Left click inside ICG plot to delete an incorrect X point','background',color_help,'Foreground',color_help_txt);
@@ -2554,14 +2618,15 @@ set(hdel_Xpoint,'ForegroundColor',[0 0 0]);
                     
                     picg = plot(hplotICG,t,icg,'b-',...
                         t(Rpeak_indices),icg(Rpeak_indices),'r+',...
-                        t(Cpoint_indices),icg(Cpoint_indices),'ro',...
+                        t(Cpoint_indices),icg(Cpoint_indices),'k^',...
                         t(Bpoint_indices),icg(Bpoint_indices),'bo',...
-                        t(Xpoint_indices),icg(Xpoint_indices),'ko');
+                        t(Xpoint_indices),icg(Xpoint_indices),'mx','MarkerSize',6);
                     set(picg,'Linewidth',1.5)
-                    text(hplotICG, t(Rpeak_indices),icg(Rpeak_indices +20),'R','color','red')
-                    text(hplotICG, t(Cpoint_indices),icg(Cpoint_indices+12),'C','color','red')
-                    text(hplotICG, t(Bpoint_indices),icg(Bpoint_indices-15),'B','color','blue')
-                    text(hplotICG, t(Xpoint_indices),icg(Xpoint_indices-25),'X')
+
+                    text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
+                    text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black')
+                    text(hplotICG, t(Bpoint_indices),limit_ann*ones(1,length(Bpoint_indices)),'B','color','blue')
+                    text(hplotICG, t(Xpoint_indices),limit_ann*ones(1,length(Xpoint_indices)),'X','color','magenta')
                     
                     set(hplotECG,'XLim',xlimit);
                     set(hplotECG,'YLim',[limit_ch1_Y1  limit_ch1_Y2]);
@@ -2593,13 +2658,13 @@ hadd_Xpoint = uicontrol(hMainFigure, ...
     'HandleVisibility', 'callback', ...
     'Units', 'normalized',...
     'Position', [Xnew_st_x   yPositionButtonsOnset-2.8*highButtons+0.03    widthButtons    highButtons], ...
-    'String', 'o', ...
+    'String', 'x', ...
     'fontsize',16,...
     'Enable','Off',...
     'TooltipString', ['To manually add X points', newline, ...
     'on ICG plot'],...
     'Callback', @add_Xpoint);
-set(hadd_Xpoint,'ForegroundColor',[0 0 0]);
+set(hadd_Xpoint,'ForegroundColor','magenta');    % brown color
 
     function add_Xpoint(~, ~)
         stop_Xpoint_mk = 0;
@@ -2637,7 +2702,7 @@ set(hadd_Xpoint,'ForegroundColor',[0 0 0]);
         
         set(tick_help,'String', 'Use mouse to drag line inside ICG plot and "Shift + Left click" in a beat to mark a X point','background',color_help,'Foreground',color_help_txt);
         X_line =  line(hplotICG, [mean(xlimit) mean(xlimit)], [limit_ch2_Y1 limit_ch2_Y2], ...
-            'color' , 'black', ...
+            'color' , 'magenta', ...
             'LineStyle', '-',...
             'linewidth', 1, ...
             'visible', 'on',...
@@ -2720,14 +2785,17 @@ set(hadd_Xpoint,'ForegroundColor',[0 0 0]);
                     set(pecg,'Linewidth',1.5);
                     picg = plot(hplotICG,t,icg,'b-',...
                             t(Rpeak_indices),icg(Rpeak_indices),'r+',...
-                            t(Cpoint_indices),icg(Cpoint_indices),'ro',...
+                            t(Cpoint_indices),icg(Cpoint_indices),'k^',...
                             t(Bpoint_indices),icg(Bpoint_indices),'bo',...
-                            t(Xpoint_indices),icg(Xpoint_indices),'ko');
-                    set(picg,'Linewidth',1.5)
-                    text(hplotICG, t(Rpeak_indices),icg(Rpeak_indices +20),'R','color','red')
-                    text(hplotICG, t(Cpoint_indices),icg(Cpoint_indices+12),'C','color','red')
-                    text(hplotICG, t(Bpoint_indices),icg(Bpoint_indices-15),'B','color','blue')
-                    text(hplotICG, t(Xpoint_indices),icg(Xpoint_indices-25),'X') 
+                            t(Xpoint_indices),icg(Xpoint_indices),'mx','MarkerSize',6);
+                    set(picg,'Linewidth',1.5)                   
+                     xlimit_1 = (Rpeak_indices(page_cur)/fs-0.05);
+                    minamp_Ch2 =  min(icg((round(xlimit_1*fs)+1):end));
+                    limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
+                    text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
+                    text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black')
+                    text(hplotICG, t(Bpoint_indices),limit_ann*ones(1,length(Bpoint_indices)),'B','color','blue')
+                    text(hplotICG, t(Xpoint_indices),limit_ann*ones(1,length(Xpoint_indices)),'X','color','magenta') 
                     
                     set(hplotECG,'XLim',xlimit);
                     set(hplotECG,'YLim',[limit_ch1_Y1  limit_ch1_Y2]);
@@ -2767,7 +2835,7 @@ hstop_Xpoint = uicontrol(hMainFigure, ...
     'TooltipString', ['Stop manual annotation ', newline, ...
     'of X point'],...
     'Callback', @stop_Xpoint);
-set(hstop_Xpoint,'ForegroundColor',[0 0 0]);
+set(hstop_Xpoint,'ForegroundColor','magenta');    % brown color
 
 
     function stop_Xpoint(~, ~)
@@ -2792,6 +2860,12 @@ set(hstop_Xpoint,'ForegroundColor',[0 0 0]);
             set(hauto_Rpeak,'Enable','on');
         end
         
+         if (strcmp(timelim,'Data Length'))
+             set(hauto_Bpoint, 'Enable', 'off');
+         else
+              set(hauto_Bpoint, 'Enable', 'on');
+         end
+        
     end
 
 hauto_Xpoint = uicontrol(hMainFigure, ...
@@ -2799,13 +2873,13 @@ hauto_Xpoint = uicontrol(hMainFigure, ...
     'HandleVisibility', 'callback', ...
     'Units', 'normalized',...
     'Position', [Xnew_st_x   yPositionButtonsOnset-4.8*highButtons+0.03    widthButtons    highButtons], ...
-    'String', 'Auto O', ...
+    'String', 'Auto X', ...
     'TooltipString', ['To automatically add X points', newline, ...
     'in [C+150, C+350] on ICG plot'],...
     'fontsize',10,...
     'Enable','off',...
     'Callback', @add_autoXpoint);
-set(hauto_Xpoint,'ForegroundColor',[0 0 0]);
+set(hauto_Xpoint,'ForegroundColor','magenta');    % brown color
 
     function add_autoXpoint(~,~)
         
@@ -2860,14 +2934,19 @@ set(hauto_Xpoint,'ForegroundColor',[0 0 0]);
             set(pecg,'Linewidth',1.5)
             picg = plot(hplotICG,t,icg,'b-',...
                 t(Rpeak_indices),icg(Rpeak_indices),'r+',...
-                t(Cpoint_indices),icg(Cpoint_indices),'ro',...
+                t(Cpoint_indices),icg(Cpoint_indices),'k^',...
                 t(Bpoint_indices),icg(Bpoint_indices),'bo',...
-                t(Xpoint_indices),icg(Xpoint_indices),'ko');
-            set(picg,'Linewidth',1.5)
-            text(hplotICG, t(Rpeak_indices),icg(Rpeak_indices +20),'R','color','red')
-            text(hplotICG, t(Cpoint_indices),icg(Cpoint_indices+12),'C','color','red')
-            text(hplotICG, t(Bpoint_indices),icg(Bpoint_indices-15),'B','color','blue')
-            text(hplotICG, t(Xpoint_indices),icg(Xpoint_indices-25),'X')
+                t(Xpoint_indices),icg(Xpoint_indices),'mx','MarkerSize',6);
+            set(picg,'Linewidth',1.5)    
+            
+            xlimit_1 = (Rpeak_indices(page_cur)/fs-0.05);
+            minamp_Ch2 =  min(icg((round(xlimit_1*fs)+1):end));
+            limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
+
+            text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
+            text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black')
+            text(hplotICG, t(Bpoint_indices),limit_ann*ones(1,length(Bpoint_indices)),'B','color','blue')
+            text(hplotICG, t(Xpoint_indices),limit_ann*ones(1,length(Xpoint_indices)),'X','color','magenta')
      end
  end
 %-------------------------  end  X point buttons and functions ------------------------------------
@@ -2909,7 +2988,7 @@ set(hinflec_show, 'String', 'Show Inflection');    % for multi line button text
     function inflec_show(~,~)
         
         set(hdisp_derivative_ICG,'Visible','on')
-        set(hdisp_derivative_ICG, 'string', ['Zero Crossing Sign:' 'NaN'])
+        set(hdisp_derivative_ICG, 'string', ['Zero Crossing Sign (--):' 'NaN'])
         
         set(hinflec_clear,'Enable','on')
         set(hdel_Cpoint,'Enable','on');set(hadd_Cpoint,'Enable','on'),set(hstop_Cpoint,'Enable','off');
@@ -2991,15 +3070,20 @@ set(hinflec_show, 'String', 'Show Inflection');    % for multi line button text
         
         picg = plot(hplotICG,t,icg,'b-',...
             t(Rpeak_indices),icg(Rpeak_indices),'r+',...
-            t(Cpoint_indices),icg(Cpoint_indices),'ro',...
+            t(Cpoint_indices),icg(Cpoint_indices),'k^',...
             t(Bpoint_indices),icg(Bpoint_indices),'bo',...
             t(Xpoint_indices),icg(Xpoint_indices),'ko',...
-            t(t_inflec+inflec_1-1),mag*id_grad(t_inflec+inflec_1-1),'green');
+            t(t_inflec+inflec_1-1),mag*id_grad(t_inflec+inflec_1-1),'k--');
         set(picg, 'Linewidth',1.5);
-        text(hplotICG, t(Rpeak_indices),icg(Rpeak_indices +20),'R','color','red')
-        text(hplotICG, t(Cpoint_indices),icg(Cpoint_indices+12),'C','color','red')
-        text(hplotICG, t(Bpoint_indices),icg(Bpoint_indices-15),'B','color','blue')
-        text(hplotICG, t(Xpoint_indices),icg(Xpoint_indices-25),'X')
+
+        xlimit_1 = (Rpeak_indices(page_cur)/fs-0.05);
+        minamp_Ch2 =  min(icg((round(xlimit_1*fs)+1):end));
+        limit_ann = (minamp_Ch2-0.25*abs(minamp_Ch2));
+      
+        text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
+        text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black')
+        text(hplotICG, t(Bpoint_indices),limit_ann*ones(1,length(Bpoint_indices)),'B','color','magenta')
+        text(hplotICG, t(Xpoint_indices),limit_ann*ones(1,length(Xpoint_indices)),'X','color','magenta')
         
         set(hplotICG,'XLim',xlimit);
         set(hplotICG,'YLim',[limit_ch2_Y1  limit_ch2_Y2]);
@@ -3035,17 +3119,84 @@ set(hinflec_clear, 'String', 'Clear Inflection');
         set(hdisp_data_ICG, 'visible','off')       
         set(hdisp_derivative_ICG,'Visible','off')
         set(hinflec_show,'Enable','on');set(hinflec_clear,'Enable','off')
-        set(hdel_Cpoint,'Enable','on');set(hadd_Cpoint,'Enable','on'),set(hstop_Cpoint,'Enable','off');
-        set(hauto_Cpoint,'Enable','on');
-        set(hdel_Bpoint,'Enable','on');set(hadd_Bpoint,'Enable','on'),set(hstop_Bpoint,'Enable','off');
-        set(hauto_Xpoint,'Enable','on');
         
-        
-        if (strcmp(timelim,'Data Length'))
-            set(hauto_Bpoint, 'Enable', 'off')
+        if (ECG_hide_mk) &&  (strcmp(timelim,'Data Length'))
+           
+       %  text for feature type made invisible
+          set(hdisp_feature_types,'visible', 'off');
+          set(hdisp_RC_feature,'visible','off');set(hdisp_C_Shape,'visible','off'); set(hdisp_X_Shape,'visible','off');
+           
+       % pop up menus and inflection panel disabled
+           set(hRC_pop,'Enable','off'); set(hC_pop,'Enable', 'off');set(hX_pop,'Enable', 'off');    
+           set(hinflec_show,'Enable','off');
+           
+       % ICG fiducial points 
+           set(hadd_Bpoint,'Enable', 'on'); set(hauto_Bpoint, 'Enable', 'off'); set(hdel_Bpoint, 'Enable', 'on');set(hstop_Bpoint,'Enable', 'off');
+           set(hadd_Xpoint,'Enable', 'on'); set(hdel_Xpoint,'Enable', 'on');set(hstop_Xpoint,'Enable', 'off');
+           set(hadd_Cpoint,'Enable', 'on'); set(hdel_Cpoint,'Enable', 'on');set(hstop_Cpoint, 'Enable', 'off');
+           
+        % parameter panel initialized
+           set(tick_segment1,'String','--');set(tick_RB_text,'String','--');set(tick_RC_text,'String','--');
+           set(tick_BX_text,'String','--'); set(tick_beat_len_text,'String','--');set(tick_Camp_text,'String','--');
+           set(tick_Bamp_text,'String','--');set(tick_Xamp_text,'String','--');
+           set(hcomp_param,'Enable','off');             
+
+       
+       elseif ECG_hide_mk  &&  (strcmp(timelim,'Beat Length'))
+           
+  % ICG fiducial points enabled
+           set(hadd_Bpoint,'Enable', 'on'); set(hauto_Bpoint, 'Enable', 'on'); set(hdel_Bpoint,'Enable','on');
+           set(hstop_Bpoint,'Enable', 'off');
+           set(hadd_Xpoint,'Enable', 'on'); set(hauto_Xpoint, 'Enable', 'on'); set(hdel_Xpoint,'Enable','on');
+           set(hstop_Xpoint,'Enable', 'off');
+           set(hadd_Cpoint,'Enable', 'on'); set(hauto_Cpoint, 'Enable', 'on'); set(hdel_Cpoint,'Enable','on');
+           set(hstop_Cpoint, 'Enable', 'off');
+           set(hdisp_feature_types,'visible', 'on');
+           set(hdisp_C_Shape,'visible','on');set(hdisp_X_Shape,'visible','on');set(hdisp_RC_feature,'visible','on');
+           set(hC_pop,'Enable','on'); set(hX_pop,'Enable', 'on');set(hRC_pop,'Enable','on');   
+       
+      elseif ~(ECG_hide_mk)  &&  (strcmp(timelim,'Beat Length'))
+          
+           set(hadd_Bpoint,'Enable', 'off'); set(hauto_Bpoint, 'Enable', 'off');set(hdel_Bpoint,'Enable', 'off'); 
+           set(hstop_Bpoint,'Enable', 'off');
+           set(hadd_Xpoint,'Enable', 'off'); set(hauto_Xpoint, 'Enable', 'on'); set(hdel_Xpoint,'Enable','off'); 
+           set(hstop_Xpoint,'Enable', 'off');
+           set(hadd_Cpoint,'Enable', 'off');set(hauto_Cpoint, 'Enable', 'on'),set(hdel_Cpoint,'Enable', 'off'); 
+           set(hstop_Cpoint, 'Enable', 'off');
+           set(hdisp_feature_types,'visible', 'off');
+           set(hdisp_C_Shape,'visible','off');set(hdisp_X_Shape,'visible','off');set(hdisp_RC_feature,'visible','off');
+           set(hC_pop,'Enable','off'); set(hX_pop,'Enable', 'off');set(hRC_pop,'Enable','off');  
+           set(hinflec_show,'Enable','off')
+          
+          
+      elseif ECG_hide_mk  &&  (strcmp(timelim,'RC Interval'))
+           
+           set(hadd_Bpoint,'Enable', 'on'); set(hauto_Bpoint, 'Enable', 'on'); set(hdel_Bpoint, 'Enable', 'on');
+           set(hstop_Bpoint,'Enable', 'off');
+           set(hadd_Xpoint,'Enable', 'off'); set(hdel_Xpoint,'Enable', 'off');set(hauto_Xpoint, 'Enable', 'on');
+           set(hstop_Xpoint,'Enable', 'off');
+           set(hadd_Cpoint,'Enable', 'on'); set(hdel_Cpoint,'Enable', 'on');set(hauto_Cpoint, 'Enable', 'on');
+           set(hstop_Cpoint, 'Enable', 'off');
+            set(hdisp_feature_types,'visible', 'on');
+           set(hdisp_C_Shape,'visible','on');set(hdisp_X_Shape,'visible','off');set(hdisp_RC_feature,'visible','on');
+           
+           set(hC_pop,'Enable','on'); set(hX_pop,'Enable', 'on');set(hRC_pop,'Enable','on');
+       elseif ~(ECG_hide_mk)  &&  (strcmp(timelim,'RC Interval'))
+           set(hdisp_feature_types,'visible', 'off');
+           set(hdisp_C_Shape,'visible','off'); set(hdisp_RC_feature,'visible','off');set(hdisp_feature_types,'visible', 'off');
+
+           set(hC_pop,'Enable','off'); set(hX_pop,'Enable', 'off'); set(hRC_pop,'Enable','off');
+           set(hinflec_show,'Enable','off'); 
+           set(hdel_Bpoint,'Enable','off');set(hadd_Bpoint,'Enable','off'),set(hauto_Bpoint, 'Enable', 'on');
+           set(hstop_Bpoint,'Enable','off');
+           set(hauto_Bpoint, 'Enable', 'off');
+           
         else
-            set(hauto_Bpoint, 'Enable', 'on');
-        end
+           set(hdisp_feature_types,'visible', 'off');
+           set(hdisp_C_Shape,'visible','off');set(hdisp_X_Shape,'visible','off');set(hdisp_RC_feature,'visible','off');
+           set(hC_pop,'Enable','off'); set(hRC_pop,'Enable','off');set(hX_pop,'Enable', 'off');
+           set(hinflec_show,'Enable','off');
+       end              
 
 
         if (strcmp(timelim,'RC Interval'))
@@ -3053,33 +3204,30 @@ set(hinflec_clear, 'String', 'Clear Inflection');
             limitX2 = (Rpeak_indices(page_cur)/fs) + seg_window;
             xlimit = [limitX1  limitX2];
             set(hdel_Xpoint,'Enable','off');set(hadd_Xpoint,'Enable','off');set(hstop_Xpoint,'Enable','off');
-            set(hauto_Xpoint,'Enable','off')
+            set(hauto_Xpoint,'Enable','off'); set(hX_pop,'Enable', 'off');
         else
             limitX1 = (page_cur-1)*seg_window;
             limitX2 = (page_cur)*seg_window;
             xlimit = [limitX1  limitX2];
-            set(hdel_Xpoint,'Enable','on');set(hadd_Xpoint,'Enable','on');set(hstop_Xpoint,'Enable','off')
-        end
-            
-        
+        end           
         
         minamp_Ch2Rd =  min(icg((round(xlimit(1)*fs)+1):end));
         maxamp_Ch2Rd =  max(icg((round(xlimit(1)*fs)+1):end));
         
         limit_ch2_Y1 = (minamp_Ch2Rd-0.5*abs(minamp_Ch2Rd));
         limit_ch2_Y2 = (maxamp_Ch2Rd+0.1);
-        
+        limit_ann = (minamp_Ch2Rd-0.25*abs(minamp_Ch2Rd));
         picg = plot(hplotICG,t,icg,'b-',...
             t(Rpeak_indices),icg(Rpeak_indices),'r+',...
-            t(Cpoint_indices),icg(Cpoint_indices),'ro',...
+            t(Cpoint_indices),icg(Cpoint_indices),'k^',...
             t(Bpoint_indices),icg(Bpoint_indices),'bo',...
-            t(Xpoint_indices),icg(Xpoint_indices),'ko');
-        set(picg,'Linewidth',1.5);
+            t(Xpoint_indices),icg(Xpoint_indices),'mx','MarkerSize',6);
+        set(picg,'Linewidth',1.5)                  
         
-        text(hplotICG, t(Rpeak_indices),icg(Rpeak_indices +20),'R','color','red')
-        text(hplotICG, t(Cpoint_indices),icg(Cpoint_indices+12),'C','color','red')
-        text(hplotICG, t(Bpoint_indices),icg(Bpoint_indices-15),'B','color','blue')
-        text(hplotICG, t(Xpoint_indices),icg(Xpoint_indices-25),'X')
+        text(hplotICG, t(Rpeak_indices),limit_ann*ones(1,length(Rpeak_indices)),'R','color','red')
+        text(hplotICG, t(Cpoint_indices),limit_ann*ones(1,length(Cpoint_indices)),'C','color','black')
+        text(hplotICG, t(Bpoint_indices),limit_ann*ones(1,length(Bpoint_indices)),'B','color','blue')
+        text(hplotICG, t(Xpoint_indices),limit_ann*ones(1,length(Xpoint_indices)),'X','color','magenta')
         
         
         set(hplotICG,'XLim',xlimit);
@@ -3091,8 +3239,7 @@ set(hinflec_clear, 'String', 'Clear Inflection');
         if (strcmp(timelim,'RC Interval'))
             set(hplotICG,'XTick', 0:(limitX2-limitX1)/5:limitX2);
             set(hplotECG,'XTick', 0:(limitX2-limitX1)/5:limitX2);
-        end
-        
+        end        
     end
 
 %% Notes 
@@ -3156,34 +3303,7 @@ hECG_hide = uicontrol(hMainFigure, ...
         set(hauto_Xpoint,'Enable','on');
         set(hECG_hide,'Enable','off'); set(hECG_show,'Enable','on');
         set(hinflec_show,'Enable','on'); set(hinflec_clear,'Enable','off');
-     
-        
-        if strcmp(timelim,'Data Length')
-            set(hdisp_C_Shape,'visible','off');
-            set(hdisp_X_Shape,'visible','off');
-            set(hdisp_RC_feature,'visible','off');
-            set(hauto_Bpoint, 'Enable', 'off');
-            set(hRC_pop,'Enable','off');
-            set(hC_pop,'Enable', 'off');
-            set(hX_pop,'Enable', 'off');           
-        elseif strcmp(timelim,'Beat Length') 
-            set(hdisp_C_Shape,'visible','on');
-            set(hdisp_X_Shape,'visible','on');
-            set(hdisp_RC_feature,'visible','on');
-            set(hauto_Bpoint, 'Enable', 'on');
-            set(hRC_pop,'Enable','on');
-            set(hC_pop,'Enable', 'on');
-            set(hX_pop,'Enable', 'on');
-        elseif strcmp(timelim,'RC Interval')
-            set(hdisp_C_Shape,'visible','on');
-            set(hdisp_X_Shape,'visible','off');
-            set(hdisp_RC_feature,'visible','on');
-            set(hauto_Bpoint, 'Enable', 'on');
-            set(hRC_pop,'Enable','on');
-            set(hC_pop,'Enable', 'on');
-            set(hX_pop,'Enable', 'off');
-            
-        end      
+        inflec_clear()  
     end
 
 
@@ -3217,13 +3337,17 @@ hECG_show = uicontrol(hMainFigure, ...
         set(hdel_Bpoint,'Enable','off');set(hadd_Bpoint,'Enable','off'),set(hstop_Bpoint,'Enable','off');
         set(hauto_Bpoint, 'Enable', 'off');
         set(hdel_Xpoint,'Enable','off');set(hadd_Xpoint,'Enable','off'),set(hstop_Xpoint,'Enable','off');
-        set(hauto_Xpoint,'Enable','on');
        
         set(hinflec_show,'Enable','off');set(hinflec_clear,'Enable','off');
+        set(hdisp_feature_types,'visible', 'off');
+        set(hdisp_RC_feature,'visible','off');set(hdisp_C_Shape,'visible','off');set(hdisp_X_Shape,'visible','off');
         
-        set(hdisp_RC_feature,'visible','off');
-        set(hdisp_C_Shape,'visible','off');
-        set(hdisp_X_Shape,'visible','off');
+        if (strcmp(timelim,'RC Interval'))
+           set(hauto_Xpoint,'Enable','off');
+        else
+           set(hauto_Xpoint,'Enable','on');
+        end
+        
     end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3499,7 +3623,7 @@ hdisp_derivative_ICG = uicontrol(hMainFigure, ...
     'HandleVisibility', 'callback', ...
     'Units', 'normalized',...
     'Position', [0.04    0.65    0.16  highButtons], ...
-    'String', 'Zero Crossing Sign',...
+    'String', 'Zero Crossing Sign (--)',...
     'fontweight','bold',...
     'Visible', 'off',...
     'fontsize',fontsize12);
@@ -3522,7 +3646,7 @@ hdisp_C_Shape = uicontrol(hMainFigure, ...       % text box in top right corner 
     'Style', 'text', ...?% can changed text
     'HandleVisibility', 'callback', ...
     'Units', 'normalized',...
-    'Position', [Cnew_st_x-1.8*w1    0.64    0.12  highButtons], ...
+    'Position', [Cnew_st_x-1.8*w1    0.5    0.12  highButtons], ...
     'String', 'Select C shape',...
     'fontweight','bold',...
     'Visible', 'Off',...
@@ -3577,7 +3701,7 @@ hdisp_X_Shape = uicontrol(hMainFigure, ...       % text box in top right corner 
     'Style', 'text', ...?% can changed text
     'HandleVisibility', 'callback', ...
     'Units', 'normalized',...
-    'Position', [Cnew_st_x-1.8*w1    0.5    0.12  highButtons], ...
+    'Position', [Cnew_st_x-1.8*w1    0.43    0.12  highButtons], ...
     'String', 'Select X shape',...
     'fontweight','bold',...
     'Visible', 'off',...
