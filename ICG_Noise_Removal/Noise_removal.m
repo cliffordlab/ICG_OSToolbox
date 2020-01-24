@@ -42,10 +42,14 @@ clc,clear
 
 HRVparams = InitializeHRVparams('Noise_removal_ICG'); 
 fs = 1000;
-lag_thres = 50;                       
+lag_thres = 50;    % lag threshold used in coarse filtering stage                   
 HRVparams.Fs = fs;
 
 %% 2. Designate folders for input and ouput data
+% The users need to indicate the folders for input data(ECG_ICG signal) and 
+% output data (EA ECG_ICG) on their local machine using 
+% "input_ECG_ICG_Folder" and "EA_folder", respectively.
+
 
 % Input Folder containing ECG and ICG channels
 input_ECG_ICG_Folder = 'D:\Clifford_Lab\1_for_upload\data_for_upload\ECG_ICG_data\';
@@ -153,7 +157,7 @@ for r = 1: length(Files)
         icg_beat_mat_shifted = [];      % accumulated icg beats in stage 3 with zero lag and after cicrular shifting in stage 3
         icg_beat_mat_corrected = [];    % noise free icg_beats accumulted after stage 3
 
-        %%  Implementation Stage 1: Fine filtering. 
+        %%  Implementation Stage 1: Amplitude filtering. 
         for m1 = 1:size(icg_beat_mat,1)
             max_amp(m1) = max( icg_beat_mat(m1,:));
             min_amp(m1) = min( icg_beat_mat(m1,:));
