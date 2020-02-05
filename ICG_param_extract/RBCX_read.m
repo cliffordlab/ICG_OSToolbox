@@ -6,7 +6,7 @@ function [RBCX_points,no_RBCX_points] = RBCX_read(ann_folder, basename_file,ID)
 %
 % INPUT:
 %    ann_folder : Folder containing annotations.
-%    basename_file : File name containing R peaks, B, C, or X points
+%    basename_file : File name containing R peaks, B, C or X points
 % OUTPUT:
 %    RBCX point :  Sorted  indices of R peaks, B, C or X points
 %    no_RBCX_points : Number of R peaks, B, C or X points
