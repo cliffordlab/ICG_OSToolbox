@@ -16,6 +16,6 @@ Download and save synchronized ECG and ICG signal to the local machine from [her
 
 <a name="output"></a>
 ## 3. Algorithm Execution and Output Data
-Running the algorithm for two records and saving output data in folder "Ensemble_Averaged_ECG_ICG". A folder "HRV_output" will also be created, alongwith a sub folder "Annotation" which contains annoatation files created by Physionet toolbox for ECG signal.
+Running the algorithm for two records and saving output data in the output folder "Ensemble_Averaged_ECG_ICG". The output folder contains EA ECG and ICG data alongwith beat contribution factor summary. The command window in MATLAB shows progress of algorithm. A folder "HRV_output" will also be created, alongwith a sub folder "Annotation" which contains annoatation files created by Physionet toolbox for ECG signal.
 ![](noise_removal_gif/3_run_and_save.gif)
 
