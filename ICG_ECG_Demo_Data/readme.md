@@ -1,4 +1,5 @@
-  **This folder contains demo data for "Open source noise removal toolbox for ICG signal".**
+  # ICG ECG Demo_Data
+    Demo data for "Open source noise removal toolbox for ICG signal".**
   
   ECG_ICG_Data:  Recorded raw ECG_ICG signal in rest condition under different psychological conditions.
   
