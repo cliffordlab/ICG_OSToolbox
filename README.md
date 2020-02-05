@@ -7,8 +7,8 @@
 If you are using this software, please cite:
 ```
  Shafa-at Ali Sheikh, Amit Shah, Oleksiy Levantsevych, Majd Soudan, Jamil Alkhalaf, Ali Bahrami Rad, 
- Omer T.Inan, Gari D. Clifford, "An Open-Source Toolbox for Automated Removal of Noisy Beats for Accurate ICG Analysis", 
-  (under review) .
+ Omer T.Inan, Gari D. Clifford, "An Open-Source Toolbox for Automated Removal of Noisy Beats for 
+ Accurate ICG Analysis", (under review) .
 ```   
 
 <a name="intro"></a>
@@ -20,9 +20,9 @@ The impedance cardiogram (ICG) signal is sensitive to artifactual influences of 
 ## 2. Instructions: 
 ### I. System requirements:
    
-a)  Download and install Matlab 2017b (v9.3) https://www.mathworks.com
+1)  Download and install Matlab 2017b (v9.3) https://www.mathworks.com
 
-b)  Add the [Physionet Cardiovascular Signal toolbox](https://github.com/cliffordlab/PhysioNet-Cardiovascular-Signal-Toolbox) to your Matlab path: **run startup.m**
+2)  Add the [Physionet Cardiovascular Signal toolbox](https://github.com/cliffordlab/PhysioNet-Cardiovascular-Signal-Toolbox) to your Matlab path: **run startup.m**
     
 ### II. Quick Start
 
