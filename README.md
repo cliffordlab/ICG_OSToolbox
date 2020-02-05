@@ -13,7 +13,7 @@ If you are using this software, please cite:
 
 <a name="intro"></a>
 ## 1. Introduction
-The impedance cardiogram (ICG) signal is sensitive to artifactual influences of respiration, speaking, motion, and electrode displacement.  Electrocardiogram  (ECG)  synchronized  ensemble averaging of ICG (conventional  ensemble  averaging method) partially mitigates these artifacts but still suffers from intrasubject variability of ICG morphology and event latency. An open-source toolbox has been developed to remove noisy beats from the ICG signal for further suppressing artifacts in ensemble-averaged (EA) ICG beats. Also, the toolbox will enable other researchers to readily reproduce and improve upon this work. 
+The impedance cardiogram (ICG) signal is sensitive to artifactual influences of respiration, speaking, motion, and electrode displacement.  Electrocardiogram  (ECG)  synchronized  ensemble averaging of ICG (conventional  ensemble averaging method) partially mitigates these artifacts but still suffers from intrasubject variability of ICG morphology and event latency. An open-source toolbox has been developed to remove noisy beats from the ICG signal for further suppressing artifacts in ensemble-averaged (EA) ICG beats. The toolbox also contains the "ICG manual annotation application" (ICMAA) to manually / automatically annotate fiducial points on EA ICG beats for further analysis. The toolbox will enable other researchers to readily reproduce and improve upon this work. 
 
 
 <a name="fullinst"></a>
@@ -42,15 +42,15 @@ Noise free three-stage EA ICG signal are obtained using [Noise_removal.m](https:
 A new parameter, Beat Contribution Factor (BCF), has been defined for each three-stage EA ICG beat to ascertain its validity for further analysis. Using [Noise_removal.m](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_Noise_Removal), BCF is calculated as the ratio of the number of clean beats (output of the third stage of the noise removal algorithm) to the total number of beats in an analysis window (input to the noise removal algorithm). Demo BCF data is available [here](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_ECG_Demo_Data/Ensemble_Averaged_ECG_ICG).
 
 ### III. Annotation Files
-Using [ICMAA.m](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_Annotation#impedance-cardiogram-manual-annotation-application-icmaa) to annotate three-stage ensemble-averaged ICG, the annotation files are returned for following:  
+Using [ICMAA.m](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_Annotation#impedance-cardiogram-manual-annotation-application-icmaa) fiducial points can be annotated on three-stage EA ICG, the annotation files are returned for following:  
 
-    ECG : *Rpeak.txt    (for R peak location)
-    ICG : *Bpoint.txt   (for B points location)
-          *Feature.txt  (for type of B point feature shape in RC interval)
-          *Cpoint.txt   (for C point location)
-          *CShape.txt   (for type of C peak shape)
-          *Xpoint.txt   (for X points location)
-          *XShape.txt   (for type of X point shape )
+    ECG : *Rpeak.txt    (for R peak locations)
+    ICG : *Bpoint.txt   (for B point locations)
+          *Feature.txt  (for type of B point feature shapes in RC interval)
+          *Cpoint.txt   (for C point locations)
+          *CShape.txt   (for type of C peak shapes)
+          *Xpoint.txt   (for X point locations)
+          *XShape.txt   (for type of X point shapes)
 
 Demo annotaion files are available [here](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_ECG_Demo_Data/Sample_Annotations_by_ICMAA). To read these files use the functions available in [ICG_param_extract](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_param_extract) included in the toolbox:
 
@@ -63,10 +63,10 @@ Demo annotaion files are available [here](https://github.com/cliffordlab/ICG_OST
 ### IV. Hemodynamic Parameters 
 The following metrics can be obtained for EA ICG beats/records using [param_extract.m](https://github.com/cliffordlab/ICG_OSToolbox/blob/master/ICG_param_extract). Demo parameters extracted from EA ICG beats/records are available [here](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_ECG_Demo_Data/Sample_Parameters_Extracted)
 
-    - RB          : (ms)    Pre-ejection period
-    - RC          : (ms)    Intersystolic time interval
-    - LVET        : (ms)    Left ventricular ejection time
-    - C-amplitude : (Ohm/s) Ejection velocity index
+    RB          : (ms)    Pre-ejection period
+    RC          : (ms)    Intersystolic time interval
+    LVET        : (ms)    Left ventricular ejection time
+    C-amplitude : (Ohm/s) Ejection velocity index
 
 
 
