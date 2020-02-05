@@ -1,8 +1,8 @@
 # Impedance Cardiogram Open-Source Toolbox
 
-A. [Introduction](#intro)
-B. [Instructions](#fullinst) 
-C. [Guide to output](#output) 
+1. [Introduction](#intro)
+2. [Instructions](#fullinst) 
+3. [Guide to output](#output) 
 
 If you are using this software, please cite:
 ```
@@ -12,12 +12,12 @@ If you are using this software, please cite:
 ```   
 
 <a name="intro"></a>
-## A. Introduction
+## 1. Introduction
 The impedance cardiogram (ICG) signal is sensitive to artifactual influences of respiration, speaking, motion, and electrode displacement.  Electrocardiogram  (ECG)  synchronized  ensemble averaging of ICG (conventional  ensemble  averaging method) partially mitigates these artifacts but still suffers from intrasubject variability of ICG morphology and event latency. An open-source toolbox has been developed to remove noisy beats from the ICG signal for further suppressing artifacts in ensemble-averaged (EA) ICG beats. Also, the toolbox will enable other researchers to readily reproduce and improve upon this work. 
 
 
 <a name="fullinst"></a>
-## B. Instructions: 
+## 2. Instructions: 
 ### I. System requirements:
    
 1)  Download and install Matlab 2017b (v9.3) https://www.mathworks.com
@@ -33,7 +33,7 @@ The impedance cardiogram (ICG) signal is sensitive to artifactual influences of 
 3) Data for demonstrating different functions of toolbox is available [here](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_ECG_Demo_Data).
 
 <a name="output"></a>
-## C. Guide to Output:
+## 3. Guide to Output
 
 ### I. Artifact free Ensemble-Averaged ICG Signal
 Noise free three-stage ensemble-averaged ICG signal are obtained using [Noise_removal.m](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_Noise_Removal). Demo output data is available [here](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_ECG_Demo_Data/Ensemble_Averaged_ECG_ICG).
