@@ -1,5 +1,5 @@
   # ICG ECG Data for Demonstration 
-    Data for demonstration of "Open source noise removal toolbox for ICG signal
+    Data for demonstration of "Open source noise removal toolbox for ICG signal".
   
   ## ECG_ICG_Data
     Recorded raw ECG_ICG signal in physically rest condition under different psychological conditions.
