@@ -1,10 +1,10 @@
 # Impedance Cardiogram Opensource Toolbox
 
 1. [Introduction](#intro)
-2. [Full Instructions](fullinst) 
-3. [Guide to Output](output) 
-4. [Contributing to this project](cont)
-5. [FAQ](faq)
+2. [Full Instructions](#fullinst) 
+3. [Guide to Output](#output) 
+4. [Contributing to this project](#cont)
+5. [FAQ](#faq)
 
 <a name="intro"></a>
 ## Introduction
