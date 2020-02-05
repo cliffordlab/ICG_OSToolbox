@@ -20,9 +20,9 @@ The impedance cardiogram (ICG) signal is sensitive to artifactual influences of 
 ## 2. Instructions: 
 ### I. System requirements:
    
-1)  Download and install Matlab 2017b (v9.3) https://www.mathworks.com
+a)  Download and install Matlab 2017b (v9.3) https://www.mathworks.com
 
-2)  Add the [Physionet Cardiovascular Signal toolbox](https://github.com/cliffordlab/PhysioNet-Cardiovascular-Signal-Toolbox) to your Matlab path: **run startup.m**
+b)  Add the [Physionet Cardiovascular Signal toolbox](https://github.com/cliffordlab/PhysioNet-Cardiovascular-Signal-Toolbox) to your Matlab path: **run startup.m**
     
 ### II. Quick Start
 
