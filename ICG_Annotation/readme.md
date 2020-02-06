@@ -16,7 +16,7 @@ Open ICMAA.m in MATLAB and click the run button to launch.
 ![](ICMAA_gif/2_Launch_ICMAA_r.gif)
 
 ### 3. Folder selection and loading record
-Use button`Select Records Folder` to select folder "Ensemble_Averaged_ECG_ICG" which contains four EA ECG_ICG records. While selecting folder, the pop up window will not show files because we are selecting the folder and not the files. The four records will be visible in `Records` listbox. Select record from the list box and use `Load Record` to load EA ECG and ICG record in ICMAA. The top window will show EA ECG signal and bottom window will show EA ICG signal.
+Use button`Select Records Folder` to select folder **Ensemble_Averaged_ECG_ICG** which contains four EA ECG_ICG records. While selecting folder, the pop up window will not show files because we are selecting the folder and not the files. The four records will be visible in `Records` listbox. Select record from the list box and use `Load Record` to load EA ECG and ICG record in ICMAA. The top window will show EA ECG signal and bottom window will show EA ICG signal.
 
 ![](ICMAA_gif/3_Select_load_r.gif)
 
@@ -82,8 +82,14 @@ In **ECG/ICG Fiducial Points Panel**, under **C** point, use button `Del` to del
 
 ![](ICMAA_gif/15_man_C_r.gif)
 
-### 16. Manual Deletion/Annotation C point
+### 16. Manual Deletion/Annotation X point
 In **ECG/ICG Fiducial Points Panel**, under **X** point, use button `Del` to delete X point and use **o** to manually annotate X point. Use mouse to select the solid magenta line. The solid magenta line will convert into broken magenta line. Use broken magenta line to annotate X point at minimum of ICG beat by looking at **ICG amp** in lower left corner of ICG plot. 
 
 ![](ICMAA_gif/16_man_X_r.gif)
+
+### 17. Annotation Files
+All the annotation files are saved in .txt format in a subfolder **Ensemble_Averaged_ECG_ICG_manual_annotation** inside the  **Ensemble_Averaged_ECG_ICG** which contains four EA ECG_ICG records.
+
+17_annotaion_r
+![](ICMAA_gif/17_annotaion_r.gif)
 
