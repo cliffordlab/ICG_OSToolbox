@@ -12,8 +12,17 @@ For demonstration purpose, we have saved EA ECG_ICG records in the folder 'Ensem
 
 ### 2. Launch ICMAA
 Open ICMAA.m in MATLAB and click the run button to launch.
+
 ![](ICMAA_gif/2_Launch_ICMAA_r.gif)
 
 ### 3. Folder selection and loading record
-3. Use button`Select Records Folder` to select folder "Ensemble_Averaged_ECG_ICG" which contains four EA ECG_ICG records. While selecting folder, the pop up window will not show files because we are selecting the folder and not the files. The four records will be visible in `Records` listbox. Select record from the list box and use 'Load Record' to load EA ECG and ICG record in ICMAA. The top window will show EA ECG signal and bottom window will show EA ICG signal.
+Use button`Select Records Folder` to select folder "Ensemble_Averaged_ECG_ICG" which contains four EA ECG_ICG records. While selecting folder, the pop up window will not show files because we are selecting the folder and not the files. The four records will be visible in `Records` listbox. Select record from the list box and use `Load Record` to load EA ECG and ICG record in ICMAA. The top window will show EA ECG signal and bottom window will show EA ICG signal.
+
 ![](ICMAA_gif/3_Select_load_r.gif)
+
+### 4. Automatic Annotation - Rpeak, C point and X point
+With 'Time Axes Control' set to **Data Length**, use **ECG/ ICG Fiducial Points Panel** to automatically annotate R peaks, C points, and X point. Click button `Auto` under each fiducial point for automatic annotation.
+
+![](ICMAA_gif/4_RCX_auto_r.gif)
+
+
