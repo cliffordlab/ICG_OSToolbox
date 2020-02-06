@@ -77,5 +77,9 @@ In **RC Inflection Visualization Panel**, use button `Show Inflection` to visual
 
 ![](ICMAA_gif/14_inflec_vis_r.gif)
 
+### 15. Manual Deletion/Annotation C point
+In **ECG/ICG Fiducial Points Panel**, use button `Del` under **C** point to delete C point. Use :small_triangle: to manually annotate C point. Use mouse to select the solid black line. The solid black line will convert into broken black line. Use broken black line to annotate C point at maximum of ICG beat by looking at **ICG amplitude** in lower left corner of ICG plot. 
+
+![](ICMAA_gif/15_man_C_r.gif)
 
 
