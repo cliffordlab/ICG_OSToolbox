@@ -1,4 +1,4 @@
-# Demonstration - Noise Removal Algorithm
+# Demonstration - ICG Noise Removal Algorithm (Noise_removal.m)
 
 1. [Adding Physionet Toolbox to path ](#physio)
 2. [Designating Folders for Input and Output Data](#folder) 
