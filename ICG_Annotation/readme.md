@@ -65,7 +65,7 @@ Use this slider bar to go to next / previous for annotation/ analysis.
 ### 12. Using RC Interval in Time Axes Control
 In **Record Selection and Loading Panel**, use  pop up menu `Time Axes Control` to select **RC Interval**. The ICG plot will be zoomed in to display RC interval. In **RC Feature Selection Panel**, use popup menu `Select RC Feature` to select the type of feature between R peak and C point on EA ICG beat. In this case, the feature is **inflection**. With selection of inflection in popup menu, button`Show Inflection` will also be enabled and inflection visualization feature of ICMAA will be activated. Dotted lines alongwith **Zero Crossing Sign** will appear on the plot. Images of different features between Rpeak and C point can be found here. 
 
-![](ICMAA_gif/12_mk_B_RC_r..gif)
+![](ICMAA_gif/12_mk_B_RC_r.gif)
 
 ### 13.Manual Annotation - B point in RC Interval mode
 Use mouse to select the solid blue line. The solid blue line will also convert into broken blue line. Use mouse to drag the line inside ICG plot. **Zero Crossing Sign** will also change from NaN to -1 or +1. Align broken blue line with dotted black line, once **Zero Crossing Sign** changes from -1 to +1. Use **Shift + Left Click** to mark B point.
