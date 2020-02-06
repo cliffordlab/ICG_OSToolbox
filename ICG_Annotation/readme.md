@@ -75,7 +75,6 @@ Use mouse to select the solid blue line. The solid blue line will also convert i
 ### 14. Use RC Inflection Visualization Panel
 In **RC Inflection Visualization Panel**, use button `Show Inflection` to visualize **Zero Crossing Sign (--)** along with dotted black lines. Use button `Clear Inflection` to clear the **Zero Crossing Sign (--)** and dotted black lines. Use mouse to select the solid blue line. The solid blue line will also convert into broken blue line. Use mouse to drag the line inside ICG plot. **Zero Crossing Sign** will also change from NaN to -1 or +1. Align broken blue line with dotted black line, once **Zero Crossing Sign** changes from -1 to +1. Use **Shift + Left Click** to mark B point.
 
-14_inflec_vis_r.
 ![](ICMAA_gif/14_inflec_vis_r.gif)
 
 
