@@ -3,8 +3,24 @@ An application for automatic and manual annotation of fiducial points on ensembl
 
 ## Demonstration - ICMAA
 1. [Saving EA ECG and ICG records](#1)
-2. [Instructions](#fullinst) 
-3. [Guide to output](#output) 
+2. [Launch ICMAA](#2) 
+3. [Folder selection and loading record](#3) 
+4. [Automatic Annotation - Rpeak, C point and X point](#4)
+5. [Hide ECG and Beat Length View](#5)
+6. [Select C shape](#6)
+7. [Select X shape](#7)
+8. [Select RC Feature](#8)
+9. [Manual Annotation - B point on Inflection/Mild Inflection/ Plateau Feature](#9)
+10. [Compute Hemodynamic Parameters](#10)
+11. [Beat by Beat Navigation](#11)
+12. [Using RC Interval in Time Axes Control](#12)
+13. [Manual Annotation - B point in RC Interval mode](#13)
+14. [Use of RC Inflection Visualization Panel](#14)
+15. [Manual Deletion/Annotation C point](#15)
+16. [Manual Deletion/Annotation X point](#16)
+17. [Annotation Files](#17)
+
+
 
 <a name="1"></a>
 ### 1. Saving EA ECG and ICG records
@@ -14,16 +30,19 @@ For demonstration purpose, we have saved EA ECG_ICG records in the folder 'Ensem
 
 ![](ICMAA_gif/1_save_input_data_r.gif)
 
+<a name="2"></a>
 ### 2. Launch ICMAA
 Open ICMAA.m in MATLAB and click the run button to launch.
 
 ![](ICMAA_gif/2_Launch_ICMAA_r.gif)
 
+<a name="3"></a>
 ### 3. Folder selection and loading record
 Use button`Select Records Folder` to select folder **Ensemble_Averaged_ECG_ICG** which contains four EA ECG_ICG records. While selecting folder, the pop up window will not show files because we are selecting the folder and not the files. The four records will be visible in `Records` listbox. Select record from the list box and use `Load Record` to load EA ECG and ICG record in ICMAA. The top window will show EA ECG signal and bottom window will show EA ICG signal.
 
 ![](ICMAA_gif/3_Select_load_r.gif)
 
+<a name="4"></a>
 ### 4. Automatic Annotation - Rpeak, C point and X point
 With `Time Axes Control` set to **Data Length**, use **ECG/ ICG Fiducial Points Panel** to automatically annotate R peaks, C points, and X point. Click button `Auto` under these fiducial point for automatic annotation.
 
@@ -71,12 +90,12 @@ In **Record Selection and Loading Panel**, use  pop up menu `Time Axes Control` 
 
 ![](ICMAA_gif/12_mk_B_RC_r.gif)
 
-### 13.Manual Annotation - B point in RC Interval mode
+### 13. Manual Annotation - B point in RC Interval mode
 Use mouse to select the solid blue line. The solid blue line will also convert into broken blue line. Use mouse to drag the line inside ICG plot. **Zero Crossing Sign** will also change from NaN to -1 or +1. Align broken blue line with dotted black line, once **Zero Crossing Sign** changes from -1 to +1. Use **Shift + Left Click** to mark B point.
 
 ![](ICMAA_gif/13_mk_B_RC_2_r.gif)
 
-### 14. Use RC Inflection Visualization Panel
+### 14. Use of RC Inflection Visualization Panel
 In **RC Inflection Visualization Panel**, use button `Show Inflection` to visualize **Zero Crossing Sign (--)** along with dotted black lines. Use button `Clear Inflection` to clear the **Zero Crossing Sign (--)** and dotted black lines. Use mouse to select the solid blue line. The solid blue line will also convert into broken blue line. Use mouse to drag the line inside ICG plot. **Zero Crossing Sign** will also change from NaN to -1 or +1. Align broken blue line with dotted black line, once **Zero Crossing Sign** changes from -1 to +1. Use **Shift + Left Click** to mark B point.
 
 ![](ICMAA_gif/14_inflec_vis_r.gif)
@@ -94,6 +113,5 @@ In **ECG/ICG Fiducial Points Panel**, under **X** point, use button `Del` to del
 ### 17. Annotation Files
 All the annotation files are saved in .txt format in a subfolder **Ensemble_Averaged_ECG_ICG_manual_annotation** inside the  **Ensemble_Averaged_ECG_ICG** which contains four EA ECG_ICG records.
 
-17_annotaion_r
 ![](ICMAA_gif/17_annotaion_r.gif)
 
