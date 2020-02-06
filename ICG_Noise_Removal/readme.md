@@ -1,5 +1,5 @@
 # Demonstration - ICG Noise Removal Algorithm 
-Use Noise_removal.m to obtain three-stage ensemble averaged (EA) ICG 
+Use of Noise_removal.m to obtain three-stage ensemble averaged (EA) ICG. Demonstration involve following steps:
 
 1. [Adding Physionet Toolbox to path ](#physio)
 2. [Designating Folders for Input and Output Data](#folder) 
