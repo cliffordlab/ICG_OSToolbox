@@ -46,6 +46,24 @@ In **RC Feature Selection Panel**, use popup menu `Select RC Feature` to select 
 ![](ICMAA_gif/8_sel_RC_r.gif)
 
 
+### 9. Manual Annotation - B point on Inflection/Mild Inflection/ Plateau Feature
+Use mouse to select the solid blue line. The solid blue line will also convert into broken blue line. Use mouse to drag the line inside ICG plot. **Zero Crossing Sign** will also change from NaN to -1 or +1. Align broken blue line with dotted black line, once **Zero Crossing Sign** changes from -1 to +1. Use **Shift + Left Click** to mark B point.
+
+![](ICMAA_gif/9_mk_B_infl_r.gif)
+
+### 10. Compute Hemodynamic Parameters
+In **Current Beat Parameter Panel**, use button `Compute Parameters` to display hemodynamic parameters such as Pre-ejection period (RB interval), Inter-systolic time interval (ISTI - RC interval), ejection time (ET - BX interval), ejection velocity index (C point amplitude), B point amplitude and X point amplitude for current beat. 
+
+![](ICMAA_gif/10_compute_param_r.gif)
+
+### 11. Beat by Beat Navigation
+In **Record Selection and Loading Panel**, use slider bar `Beat by Beat Navigation` to navigate between different beats of a record.
+Use this slider bar to go to next / previous for annotation/ analysis.
+
+![](ICMAA_gif/11_beat_by_beat_r.gif)
+
+### 12. Manual Annotation - B point using RC interval
+
 
 
 
