@@ -21,8 +21,15 @@ Use button`Select Records Folder` to select folder "Ensemble_Averaged_ECG_ICG" w
 ![](ICMAA_gif/3_Select_load_r.gif)
 
 ### 4. Automatic Annotation - Rpeak, C point and X point
-With 'Time Axes Control' set to **Data Length**, use **ECG/ ICG Fiducial Points Panel** to automatically annotate R peaks, C points, and X point. Click button `Auto` under each fiducial point for automatic annotation.
+With 'Time Axes Control' set to **Data Length**, use **ECG/ ICG Fiducial Points Panel** to automatically annotate R peaks, C points, and X point. Click button `Auto` under these fiducial point for automatic annotation.
 
 ![](ICMAA_gif/4_RCX_auto_r.gif)
+
+### 5. Hide ECG and Beat Length View
+Use button `Hide ECG` to hide the ECG plot, and set popup menu 'Time Axes Control' to **Beat Length**. This will show single EA ICG beat in plot area.
+
+![](ICMAA_gif/5_Hide_beat_len_r.gif)
+
+
 
 
