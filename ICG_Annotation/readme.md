@@ -10,7 +10,7 @@ An application for automatic and manual annotation of fiducial points on ensembl
 6. [Select C shape](#6)
 7. [Select X shape](#7)
 8. [Select RC Feature](#8)
-9. [Manual Annotation - B point on Inflection/Mild Inflection/ Plateau Feature](#9)
+9. [Manual Annotation - B point on Feature: Inflection/Mild Inflection/ Plateau Feature](#9)
 10. [Compute Hemodynamic Parameters](#10)
 11. [Beat by Beat Navigation](#11)
 12. [Using RC Interval in Time Axes Control](#12)
@@ -22,10 +22,10 @@ An application for automatic and manual annotation of fiducial points on ensembl
 18. [Annotation Files](#18)
 19. [B point Annotation Examples](#19)
     - [Manual Deletion/ Annotation - B point](#19a)
-    - [Manual Annotation - B point on Valley/Notch](#19a)
-    - [Manual Annotation - B point on Onset of the Rise](#19b)
-    - [Manual Deletion/ Annotation - B point](#19b)
-    - [Automatic Annotation - B point on Featureless](#19c)
+    - [Manual Annotation - B point on Feature:  Valley/Notch](#19b)
+    - [Manual Annotation - B point on Feature: Onset of the Rise](#19c)
+    - [Manual Annotation - B point on Feature: Change in Gradient](#19c)
+    - [Automatic Annotation - B point on Featureless](#19d)
 
 
 
@@ -52,7 +52,7 @@ Use button`Select Records Folder` to select folder **Ensemble_Averaged_ECG_ICG**
 
 <a name="4"></a>
 ### 4. Automatic Annotation - Rpeak, C point and X point
-With `Time Axes Control` set to **Data Length**, use **ECG/ ICG Fiducial Points Panel** to automatically annotate R peaks, C points, and X point. Click button `Auto` under these fiducial point for automatic annotation.
+With `Time Axes Control` set to **Data Length**, use **ECG/ ICG Fiducial Points Panel** to automatically annotate R peaks, C points, and X points. Click button `Auto` under these fiducial point for automatic annotation.
 
 ![](ICMAA_gif/4_RCX_auto_r.gif)
 
@@ -143,3 +143,5 @@ All the annotation files are saved in .txt format in a subfolder **Ensemble_Aver
 
 ![](ICMAA_gif/17_annotaion_r.gif)
 
+<a name="19"></a>
+### 19. B point Annotation Examples
