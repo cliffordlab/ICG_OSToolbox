@@ -18,7 +18,15 @@ An application for automatic and manual annotation of fiducial points on ensembl
 14. [Use of RC Inflection Visualization Panel](#14)
 15. [Manual Deletion/Annotation C point](#15)
 16. [Manual Deletion/Annotation X point](#16)
-17. [Annotation Files](#17)
+17. [Manual Deletion/Annotation R peak](#17)
+18. [Annotation Files](#18)
+19. [B point Annotation Examples](#19)
+    - [Manual Deletion/ Annotation - B point](#19a)
+    - [Manual Annotation - B point on Valley/Notch](#19a)
+    - [Manual Annotation - B point on Onset of the Rise](#19b)
+    - [Manual Deletion/ Annotation - B point](#19b)
+    - [Automatic Annotation - B point on Featureless](#19c)
+
 
 
 
@@ -57,13 +65,13 @@ Use button `Hide ECG` to hide the ECG plot, and set popup menu `Time Axes Contro
 
 <a name="6"></a>
 ### 6. Select C shape
-In **C & X Shape Selection Panel**, use popup menu `Select C shape` to select the shape of C point. In this case, C shape is single peak. Images of different C shapes for reference can be found here............
+In **C & X Shape Selection Panel**, use popup menu `Select C shape` to select the shape of C point. In this case, C shape is single peak. Images of different C shapes can be found [here](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_Annotation/ICMAA_C_shape).
 
 ![](ICMAA_gif/6_sel_C_shape_r.gif)
 
 <a name="7"></a>
 ### 7. Select X shape
-In **C & X Shape Selection Panel**, use popup menu `Select X shape` to select the shape of X point. In this case, X shape is single notch. Images of different X shapes for reference can be found here............
+In **C & X Shape Selection Panel**, use popup menu `Select X shape` to select the shape of X point. In this case, X shape is single notch. Images of different X shapes can be found here............
 
 ![](ICMAA_gif/7_sel_X_shape_r.gif)
 
@@ -123,7 +131,14 @@ In **ECG/ICG Fiducial Points Panel**, under **X** point, use button `Del` to del
 ![](ICMAA_gif/16_man_X_r.gif)
 
 <a name="17"></a>
-### 17. Annotation Files
+### 17. Manual Deletion/Annotation R peak
+In case, Physionet toolbox incorrectly detects R peaks, then in **ECG/ICG Fiducial Points Panel**, under **R Peak**, use button `Del` to delete R peak and use **+** to manually annotate R peaks. Use mouse to select the solid red line. The solid red line will convert into broken red line. Use broken red line to annotate R peak at maximum of ECG beat by looking at **ECG amp** in lower left corner of ECG plot. 
+
+![](ICMAA_gif/18_man_R_r.gif)
+
+
+<a name="18"></a>
+### 18. Annotation Files
 All the annotation files are saved in .txt format in a subfolder **Ensemble_Averaged_ECG_ICG_manual_annotation** inside the  **Ensemble_Averaged_ECG_ICG** which contains four EA ECG_ICG records.
 
 ![](ICMAA_gif/17_annotaion_r.gif)
