@@ -21,14 +21,25 @@ Use button`Select Records Folder` to select folder "Ensemble_Averaged_ECG_ICG" w
 ![](ICMAA_gif/3_Select_load_r.gif)
 
 ### 4. Automatic Annotation - Rpeak, C point and X point
-With 'Time Axes Control' set to **Data Length**, use **ECG/ ICG Fiducial Points Panel** to automatically annotate R peaks, C points, and X point. Click button `Auto` under these fiducial point for automatic annotation.
+With `Time Axes Control` set to **Data Length**, use **ECG/ ICG Fiducial Points Panel** to automatically annotate R peaks, C points, and X point. Click button `Auto` under these fiducial point for automatic annotation.
 
 ![](ICMAA_gif/4_RCX_auto_r.gif)
 
 ### 5. Hide ECG and Beat Length View
-Use button `Hide ECG` to hide the ECG plot, and set popup menu 'Time Axes Control' to **Beat Length**. This will show single EA ICG beat in plot area.
+Use button `Hide ECG` to hide the ECG plot, and set popup menu `Time Axes Control` to **Beat Length**. This will show single EA ICG beat in plot area.
 
 ![](ICMAA_gif/5_Hide_beat_len_r.gif)
+
+### 6. Select C shape
+In **C & X Shape Selection Panel**, use popup menu `Select C shape` to select the shape of C point. In this case, C shape is single peak. Images of different C shapes for reference can be found here............
+
+![](ICMAA_gif/6_sel_C_shape_r.gif)
+
+### 7. Select X shape
+In **C & X Shape Selection Panel**, use popup menu `Select X shape` to select the shape of X point. In this case, X shape is single notch. Images of different X shapes for reference can be found here............
+
+![](ICMAA_gif/7_sel_X_shape_r.gif)
+
 
 
 
