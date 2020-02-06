@@ -40,6 +40,11 @@ In **C & X Shape Selection Panel**, use popup menu `Select X shape` to select th
 
 ![](ICMAA_gif/7_sel_X_shape_r.gif)
 
+### 8. Select RC Feature
+In **RC Feature Selection Panel**, use popup menu `Select RC Feature` to select the type of feature between R peak and C point on EA ICG beat. In this case, the feature is **inflection**. With selection of inflection in popup menu, button`Show Inflection` will also be enabled and inflection visualization feature of ICMAA will be activated. Dotted lines alongwith **Zero Crossing Sign** will appear on the plot. Images of different features between Rpeak and C point can be found here. 
+
+![](ICMAA_gif/8_sel_RC_r.gif)
+
 
 
 
