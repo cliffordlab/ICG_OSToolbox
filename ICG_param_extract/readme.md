@@ -2,7 +2,7 @@
 Function files to read annotation files and extract hemodynamic parameters from EA ECG and ICG record.
 
 ## Reading Annotation Files
-Demo annotaion files are available [here](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_ECG_Demo_Data/Sample_Annotations_by_ICMAA). To read these files use the functions available in [ICG_param_extract](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_param_extract) included in the toolbox:
+Demo annotaion files are available [here](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_ECG_Demo_Data/Sample_Annotations_by_ICMAA). To read these files use the toolbox functions available at [ICG_param_extract](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_param_extract):
 
     R peak locations = RBCX_read('ann_folder', '*Rpeak.txt','ID')
     B point locations = RBCX_read('ann_folder', '*Bpoint.txt','ID')
