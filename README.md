@@ -42,13 +42,13 @@ Noise free three-stage EA ICG signal are obtained using [Noise_removal.m](https:
 A new parameter, Beat Contribution Factor (BCF), has been defined for each three-stage EA ICG beat to ascertain its validity for further analysis. Using [Noise_removal.m](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_Noise_Removal), BCF is calculated as the ratio of the number of clean beats (output of the third stage of the noise removal algorithm) to the total number of beats in an analysis window (input to the noise removal algorithm). Demo BCF data is available [here](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_ECG_Demo_Data/Ensemble_Averaged_ECG_ICG).
 
 ### III. Annotation Files
-Using [ICMAA.m](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_Annotation#impedance-cardiogram-manual-annotation-application-icmaa) fiducial points can be annotated on three-stage EA ICG, the annotation files are returned for following:  
+Using [ICMAA.m](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_Annotation#impedance-cardiogram-manual-annotation-application-icmaa) fiducial points can be annotated on EA ECG and ICG, and the annotation files are returned for following:  
 
     ECG : *Rpeak.txt    (for R peak locations)
     ICG : *Bpoint.txt   (for B point locations)
           *Feature.txt  (for type of B point feature shapes in RC interval)
           *Cpoint.txt   (for C point locations)
-          *CShape.txt   (for type of C peak shapes)
+          *CShape.txt   (for type of C point shapes)
           *Xpoint.txt   (for X point locations)
           *XShape.txt   (for type of X point shapes)
           
