@@ -135,6 +135,8 @@ In **ECG/ICG Fiducial Points Panel**, under **C** point, use button `Del` to del
 ##### Manual Deletion/Annotation B point
 In **ECG/ICG Fiducial Points Panel**, under **B** point, use button `Del` to delete B point and use **o** to manually annotate B point. Use mouse to select the solid blue line. The solid blue line will convert into broken blue line. Use broken blue line to annotate B point at ICG beat by looking at **ICG amp** in lower left corner of ICG plot. 
 
+![](ICMAA_gif/24_man_B_r.gif)
+
 <a name="21d"></a>
 ##### Manual Deletion/Annotation X point
 In **ECG/ICG Fiducial Points Panel**, under **X** point, use button `Del` to delete X point and use **X** to manually annotate X point. Use mouse to select the solid magenta line. The solid magenta line will convert into broken magenta line. Use broken magenta line to annotate X point at minimum of ICG beat by looking at **ICG amp** in lower left corner of ICG plot. 
@@ -168,18 +170,37 @@ Use mouse to select the solid blue line. The solid blue line will also convert i
 ### B point Annotation Examples
 
 <a name="3a"></a>
-#### Manual Annotation: B point on Feature: Valley/Notch
+#### Manual Annotation - B point on Feature: Notch/Valley
+After selecting RC feature as **Notch** from pop-up menu `Select RC feature`, use mouse to select the solid blue line. The solid blue line will convert into broken blue line. Use mouse to drag the line inside ICG plot. Use broken blue line to annotate B point at minimum of ICG beat after R peak by looking at **ICG amp** in lower left corner of ICG plot. 
+
+![](ICMAA_gif/21_B_Notch_r.gif)
 
 <a name="3b"></a>
-#### Manual Annotation: B point on Feature: Plateau
+#### Manual Annotation - B point on Feature: Plateau
 
 After selecting RC feature as **Plateau** from pop-up menu `Select RC feature`, use mouse to select the solid blue line. The solid blue line will convert into broken blue line. Use mouse to drag the line inside ICG plot. **Zero Crossing Sign** will also change from NaN to -1 or +1. Align broken blue line with dotted black line, once **Zero Crossing Sign** changes from -1 to +1. Use **Shift + Left Click** to mark B point.
 
 ![](ICMAA_gif/19_B_Plateau_r.gif)
 
-
 <a name="3c"></a>
 
-    - [Manual Annotation - B point on Feature: Onset of the Rise](#3c)
-    - [Manual Annotation - B point on Feature: Change in Gradient](#3d)
-    - [Automatic Annotation - B point on Featureless](#3e)
+#### Manual Annotation - B point on Feature: Onset of the Rise
+ After selecting RC feature as **Onset of the Rise** from pop-up menu `Select RC feature`, use mouse to select the solid blue line. The solid blue line will convert into broken blue line. Use mouse to drag the line inside ICG plot. Use broken blue line to annotate B point at the onset of the rise. In this example, the feature **Plateau** is close to R peak and makes RB < 35 ms, which is physiologically not possible.
+
+![](ICMAA_gif/23_Onset_rise_r.gif)
+
+<a name="3d"></a>
+ #### Manual Annotation - B point on Feature: Change in Gradient
+ After selecting RC feature as **Change in Gradient** from pop-up menu `Select RC feature`, use mouse to select the solid blue line. The solid blue line will convert into broken blue line. Use mouse to drag the line inside ICG plot. Use broken blue line to annotate B point at the Change in Gradient. In this example, the feature **Plateau** is close to R peak and makes RB < 35 ms, which is physiologically not possible.
+ 
+ ![](ICMAA_gif/22_Change_in_grad_r.gif)
+ 
+ <a name="3e"></a>
+ #### Automatic Annotation - B point on Featureless
+ In case, there is no feature between R peak and C point in EA ICG beat. Select **Featureless** from pop-up menu `Select RC feature`. ICMAA will automatically mark B point on EA ICG beat. In this example, the feature **Valley** is close to R peak and makes RB < 35 ms, which is physiologically not possible.
+ 
+ ![](ICMAA_gif/20_B_featureless_r.gif)
+
+
+ 
+ 
