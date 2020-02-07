@@ -2,4 +2,4 @@
 A library of images of C point shapes in ICG.
 
 ## Single Peak
-[](Single peak.png)
+[](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_Annotation/ICMAA_C_shape/Single peak.png)
