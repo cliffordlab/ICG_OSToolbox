@@ -2,7 +2,8 @@
 An application for automatic and manual annotation of fiducial points on ensemble-averaged (EA) ECG and ICG beats.
 
 ## Demonstration - ICMAA
-1. [Saving EA ECG and ICG records](#1)
+1. [Annotation Process](#1)
+    - [Saving EA ECG and ICG records](#1a)
 2. [Launch ICMAA](#2) 
 3. [Folder Selection and Loading Record](#3) 
 4. [Automatic Annotation - Rpeak, C point and X point](#4)
@@ -28,10 +29,10 @@ An application for automatic and manual annotation of fiducial points on ensembl
     - [Automatic Annotation - B point on Featureless](#19d)
 
 
-
-
 <a name="1"></a>
-### 1. Saving EA ECG and ICG records
+### 1. Annotation Process
+<a name="1a"></a>
+#### - Saving EA ECG and ICG records
 
 Download and save EA ECG and ICG signal in a folder on local machine from [here](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_ECG_Demo_Data/Ensemble_Averaged_ECG_ICG). 
 For demonstration purpose, we have saved EA ECG_ICG records in the folder 'Ensemble_Averaged_ECG_ICG' as shown in gif below.
