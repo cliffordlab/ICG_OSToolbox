@@ -15,7 +15,7 @@ An application for automatic and manual annotation of fiducial points on ensembl
     - [Compute Hemodynamic Parameters](#1j)
     - [Beat by Beat Navigation](#1k)
     - [Annotation Files](#1l)
-2. [ICMAA Panel Functions](#2)
+2. [ICMAA Panels: Functions](#2)
     - [ECG/ICG Fiducial Point Panel](#21)
         - [Manual Deletion/Annotation R peak](#21a)
         - [Manual Deletion/Annotation C point](#21b)
@@ -113,7 +113,7 @@ During the process of annotation, all the annotation files are saved in .txt for
 
 
 <a name="2"></a>
-### ICMAA Panel Functions
+### ICMAA Panels Functions
 Most of the panels of ICMAA have been explained in [process of annotation](#1). Functionality of remaining panels is described below:
 
 <a name="21"></a>
