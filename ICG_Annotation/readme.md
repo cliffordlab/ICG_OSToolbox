@@ -106,7 +106,7 @@ In **Record Selection and Loading Panel**, use slider bar `Beat by Beat Navigati
 
 <a name="1l"></a>
 #### Annotation Files
-During the process of annotation, all the annotation files are saved in .txt format in a subfolder **Ensemble_Averaged_ECG_ICG_manual_annotation** inside the  **Ensemble_Averaged_ECG_ICG** which contains four EA ECG_ICG records. These text files can be accessed anytime for further analysis. 
+During the process of annotation, all the annotations are saved in .txt file format in a subfolder **Ensemble_Averaged_ECG_ICG_manual_annotation** inside the  **Ensemble_Averaged_ECG_ICG** which contains EA ECG_ICG records. These text files can be accessed anytime for further analysis. 
 
 ![](ICMAA_gif/17_annotaion_r.gif)
 
