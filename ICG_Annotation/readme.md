@@ -100,8 +100,7 @@ In **Current Beat Parameter Panel**, use button `Compute Parameters` to display 
 
 <a name="1k"></a>
 #### Beat by Beat Navigation
-In **Record Selection and Loading Panel**, use slider bar `Beat by Beat Navigation` to navigate between different beats of a record.
-Use this slider bar to navigate to other beats of EA ICG and perform annotation.
+In **Record Selection and Loading Panel**, use slider bar `Beat by Beat Navigation` to navigate between different beats of a record to perform annotation.
 
 ![](ICMAA_gif/11_beat_by_beat_r.gif)
 
