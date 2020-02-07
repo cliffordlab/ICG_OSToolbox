@@ -53,8 +53,7 @@ Using [ICMAA.m](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_Ann
           *XShape.txt   (for type of X point shapes)
           
 
-Demo annotaion files are available [here](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_ECG_Demo_Data/Sample_Annotations_by_ICMAA). To read these files use the functions available in [ICG_param_extract](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_param_extract) included in the toolbox:
-
+Demo annotaion files are available [here](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_ECG_Demo_Data/Sample_Annotations_by_ICMAA). To read these files use the toolbox functions available in [ICG_param_extract](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_param_extract):
     R peak locations = RBCX_read('ann_folder', '*Rpeak.txt','ID')
     B point locations = RBCX_read('ann_folder', '*Bpoint.txt','ID')
     C point locations = RBCX_read('ann_folder', '*Cpoint.txt','ID')
