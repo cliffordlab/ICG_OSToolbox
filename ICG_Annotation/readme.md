@@ -11,7 +11,7 @@ An application for automatic and manual annotation of fiducial points on ensembl
     - [Select C shape](#1f)
     - [Select X shape](#1g)
     - [Select RC Feature](#1h)
-    - [Manual Annotation - B point on Feature: Inflection/ Mild Inflection/ Plateau Feature](#1i)
+    - [Manual Annotation - B point on Feature: Inflection/ Mild Inflection](#1i)
     - [Compute Hemodynamic Parameters](#1j)
     - [Beat by Beat Navigation](#1k)
     - [Annotation Files](#1l)
@@ -27,9 +27,10 @@ An application for automatic and manual annotation of fiducial points on ensembl
       - [Manual Annotation of B point in RC Interval mode](#23b)
 3. [B point Annotation Examples](#3)
     - [Manual Annotation - B point on Feature: Valley/Notch](#3a)
-    - [Manual Annotation - B point on Feature: Onset of the Rise](#3b)
-    - [Manual Annotation - B point on Feature: Change in Gradient](#3c)
-    - [Automatic Annotation - B point on Featureless](#3d)
+    - [Manual Annotation - B point on Feature: Plateau](#3b)
+    - [Manual Annotation - B point on Feature: Onset of the Rise](#3c)
+    - [Manual Annotation - B point on Feature: Change in Gradient](#3d)
+    - [Automatic Annotation - B point on Featureless](#3e)
 
 
 <a name="1"></a>
@@ -86,8 +87,8 @@ In **RC Feature Selection Panel**, use popup menu `Select RC Feature` to select 
 ![](ICMAA_gif/8_sel_RC_r.gif)
 
 <a name="1i"></a>
-#### - Manual Annotation - B point on Inflection/Mild Inflection/ Plateau Feature
-After selecting RC feature as inflection/mild inflection or Plateau, use mouse to select the solid blue line. The solid blue line will also convert into broken blue line. Use mouse to drag the line inside ICG plot. **Zero Crossing Sign** will also change from NaN to -1 or +1. Align broken blue line with dotted black line, once **Zero Crossing Sign** changes from -1 to +1. Use **Shift + Left Click** to mark B point.
+#### - Manual Annotation - B point on Feature: Inflection/Mild Inflection
+After selecting RC feature as inflection/mild inflection, use mouse to select the solid blue line. The solid blue line will also convert into broken blue line. Use mouse to drag the line inside ICG plot. **Zero Crossing Sign** will also change from NaN to -1 or +1. Align broken blue line with dotted black line, once **Zero Crossing Sign** changes from -1 to +1. Use **Shift + Left Click** to mark B point.
 
 ![](ICMAA_gif/9_mk_B_infl_r.gif)
 
@@ -132,10 +133,11 @@ In **ECG/ICG Fiducial Points Panel**, under **C** point, use button `Del` to del
 
 <a name="21c"></a>
 ##### Manual Deletion/Annotation B point
+In **ECG/ICG Fiducial Points Panel**, under **B** point, use button `Del` to delete B point and use **o** to manually annotate B point. Use mouse to select the solid blue line. The solid blue line will convert into broken blue line. Use broken blue line to annotate B point at ICG beat by looking at **ICG amp** in lower left corner of ICG plot. 
 
 <a name="21d"></a>
-#### Manual Deletion/Annotation X point
-In **ECG/ICG Fiducial Points Panel**, under **X** point, use button `Del` to delete X point and use **o** to manually annotate X point. Use mouse to select the solid magenta line. The solid magenta line will convert into broken magenta line. Use broken magenta line to annotate X point at minimum of ICG beat by looking at **ICG amp** in lower left corner of ICG plot. 
+##### Manual Deletion/Annotation X point
+In **ECG/ICG Fiducial Points Panel**, under **X** point, use button `Del` to delete X point and use **X** to manually annotate X point. Use mouse to select the solid magenta line. The solid magenta line will convert into broken magenta line. Use broken magenta line to annotate X point at minimum of ICG beat by looking at **ICG amp** in lower left corner of ICG plot. 
 
 ![](ICMAA_gif/16_man_X_r.gif)
 
@@ -155,7 +157,7 @@ In **Record Selection and Loading Panel**, use  pop up menu `Time Axes Control` 
 ![](ICMAA_gif/12_mk_B_RC_r.gif)
 
 <a name="23b"></a>
-##### Manual Annotation - B point in RC Interval mode
+##### Manual Annotation of B point in RC Interval mode
 Use mouse to select the solid blue line. The solid blue line will also convert into broken blue line. Use mouse to drag the line inside ICG plot. **Zero Crossing Sign** will also change from NaN to -1 or +1. Align broken blue line with dotted black line, once **Zero Crossing Sign** changes from -1 to +1. Use **Shift + Left Click** to mark B point.
 
 ![](ICMAA_gif/13_mk_B_RC_2_r.gif)
@@ -164,3 +166,20 @@ Use mouse to select the solid blue line. The solid blue line will also convert i
 
 <a name="3"></a>
 ### B point Annotation Examples
+
+<a name="3a"></a>
+#### Manual Annotation: B point on Feature: Valley/Notch
+
+<a name="3b"></a>
+#### Manual Annotation: B point on Feature: Plateau
+
+After selecting RC feature as **Plateau** from pop-up menu `Select RC feature`, use mouse to select the solid blue line. The solid blue line will convert into broken blue line. Use mouse to drag the line inside ICG plot. **Zero Crossing Sign** will also change from NaN to -1 or +1. Align broken blue line with dotted black line, once **Zero Crossing Sign** changes from -1 to +1. Use **Shift + Left Click** to mark B point.
+
+![](ICMAA_gif/19_B_Plateau_r.gif)
+
+
+<a name="3c"></a>
+
+    - [Manual Annotation - B point on Feature: Onset of the Rise](#3c)
+    - [Manual Annotation - B point on Feature: Change in Gradient](#3d)
+    - [Automatic Annotation - B point on Featureless](#3e)
