@@ -113,7 +113,7 @@ During the process of annotation, all the annotation files are saved in .txt for
 
 
 <a name="2"></a>
-### ICMAA Panels Functions
+### ICMAA Panels: Functions
 Most of the panels of ICMAA have been explained in [process of annotation](#1). Functionality of remaining panels is described below:
 
 <a name="21"></a>
