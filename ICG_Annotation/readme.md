@@ -71,7 +71,7 @@ In **C & X Shape Selection Panel**, use popup menu `Select C shape` to select th
 
 <a name="7"></a>
 ### 7. Select X shape
-In **C & X Shape Selection Panel**, use popup menu `Select X shape` to select the shape of X point. In this case, X shape is single notch. Images of different X shapes can be found here............
+In **C & X Shape Selection Panel**, use popup menu `Select X shape` to select the shape of X point. In this case, X shape is single notch. Images of different X shapes can be found [here](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_Annotation/ICMAA_X_shape).
 
 ![](ICMAA_gif/7_sel_X_shape_r.gif)
 
