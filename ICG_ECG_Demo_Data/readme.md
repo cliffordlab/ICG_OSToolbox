@@ -1,17 +1,15 @@
 # ICG ECG Data for Demonstration 
   
-    Data for demonstration of "Open source noise removal toolbox for ICG signal".
+Data for demonstration of "Open source noise removal toolbox for ICG signal".
   
 ## ECG_ICG_Data
 
 Synchronized ECG and ICG signals in physically rest condition under different psychological conditions recorded using impedance and electrocardiography equipment from BIOPAC (BIOPAC Systems Inc., Goleta, CA).
 
-    - ECG 
-      - Sampling frequency:  1000
-      -  Physical units:  mV
-     - ICG
-      - Sampling frequnecy: 1000
-      - Physical units:  Ohm/s
+    - Sampling frequency:  1000
+    -  Physical units
+      - ECG :  mV
+      - ICG:  Ohm/s
 
 ## Ensemble_Averaged_ECG_ICG
   
