@@ -13,13 +13,13 @@ Synchronized ECG and ICG signals in physically rest condition under different ps
 
 ## Ensemble_Averaged_ECG_ICG
   
-Noise free three-stage ensmeble averaged (EA) ECG ICG data generated from "ECG_ICG_Data" using noise removal algorithm.
+Noise-free three-stage ensemble averaged (EA) ECG and ICG data generated from [synchronized ECG and ICG signal](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_ECG_Demo_Data/ECG_ICG_Data) using [noise removal algorithm](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_Noise_Removal).
   
 ## Sample_Annoatations_by_ICMAA
   
-Annotation of Noise free EA ECG ICG data from folder "Ensemble_Averaged_ECG_ICG" using ICMAA.
+Annotation files of noise-free three-stage [EA ECG and ICG data](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_ECG_Demo_Data/Ensemble_Averaged_ECG_ICG) created using [ICMAA](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_Annotation).
   
 ## Sample_Parameters_Extracted
   
-Parameters extracted using EA ICG from "Ensemble_Averaged_ECG_ICG" and annotations from "Sample_Annoatations_by_ICMAA".
+Parameters extracted from [EA ICG](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_ECG_Demo_Data/Ensemble_Averaged_ECG_ICG) and [annotation files](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_ECG_Demo_Data/Sample_Annotations_by_ICMAA) using [function files](https://github.com/cliffordlab/ICG_OSToolbox/tree/master/ICG_param_extract).
  
