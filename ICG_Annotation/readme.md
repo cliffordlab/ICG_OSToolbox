@@ -25,6 +25,7 @@ An application for automatic and manual annotation of fiducial points on ensembl
     - [Time Axes Control](#23)
       - [Using RC Interval in Time Axes Control](#23a)
       - [Manual Annotation of B point in RC Interval mode](#23b)
+     -[Add Notes](#24)
 3. [B point Annotation Examples](#3)
     - [Manual Annotation - B point on Feature: Valley/Notch](#3a)
     - [Manual Annotation - B point on Feature: Plateau](#3b)
@@ -163,7 +164,10 @@ Use mouse to select the solid blue line. The solid blue line will also convert i
 
 ![](ICMAA_gif/13_mk_B_RC_2_r.gif)
 
-
+<a name="24"></a>
+#### Add Notes
+In **RC Feature Selection Panel**, use button `Add Notes` to open **Notepad**. The user can save any notes/comments in this file for the record under analysis. After writing notes/comments, save and close the notepad. The Notepad will be saved along with other annotation files. 
+![](ICMAA_gif/25_notes_r.gif)
 
 <a name="3"></a>
 ### B point Annotation Examples
