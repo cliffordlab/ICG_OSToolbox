@@ -8,8 +8,8 @@ Synchronized ECG and ICG signals in physically rest condition under different ps
 
     - Sampling frequency:  1000
     -  Physical units
-      - ECG :  mV
-      - ICG:  Ohm/s
+      - Channel 1 : ECG :  mV
+      - Channel 2 : ICG :  Ohm/s
 
 ## Ensemble_Averaged_ECG_ICG
   
