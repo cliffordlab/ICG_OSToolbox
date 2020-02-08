@@ -194,7 +194,7 @@ After selecting RC feature as **Plateau** from pop-up menu `Select RC feature`, 
 
 <a name="3d"></a>
  #### Manual Annotation - B point on Feature: Change in Gradient
- After selecting RC feature as **Change in Gradient** from pop-up menu `Select RC feature`, use mouse to select the solid blue line. The solid blue line will convert into broken blue line. Use mouse to drag the line inside ICG plot. Use broken blue line to annotate B point at the Change in Gradient. In this example, the feature **Plateau** is close to R peak and makes RB < 35 ms, which is physiologically not possible.
+ After selecting RC feature as **Change in Gradient** from pop-up menu `Select RC feature`, use mouse to select the solid blue line. The solid blue line will convert into broken blue line. Use mouse to drag the line inside ICG plot. Use broken blue line to annotate B point at the Change in Gradient. 
  
  ![](ICMAA_gif/22_Change_in_grad_r.gif)
  
