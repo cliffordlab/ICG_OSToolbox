@@ -25,7 +25,7 @@ An application for automatic and manual annotation of fiducial points on ensembl
     - [Time Axes Control](#23)
       - [Using RC Interval in Time Axes Control](#23a)
       - [Manual Annotation of B point in RC Interval mode](#23b)
-    -[Add Notes](#24)
+    - [Add Notes](#24)
 3. [B point Annotation Examples](#3)
     - [Manual Annotation - B point on Feature: Valley/Notch](#3a)
     - [Manual Annotation - B point on Feature: Plateau](#3b)
