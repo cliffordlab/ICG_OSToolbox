@@ -1,4 +1,4 @@
-# Impedance Cardiogram Open-Source Toolbox
+# Open Source Toolbox for ICG Analysis
 
 1. [Introduction](#intro)
 2. [Instructions](#fullinst) 
