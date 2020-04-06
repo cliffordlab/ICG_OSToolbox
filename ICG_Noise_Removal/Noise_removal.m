@@ -248,7 +248,7 @@ for r = 1: length(Files)        % Selecting two records for Demo
         EA_ecg =  [EA_ecg mean(ecg_beat_mat)];                      % ensemble averaged ecg for all segments
         
         if size(icg_beat_mat_corrected,1) == 0
-            EA_icg_AXC = [EA_icg_AXC zeros(1,size(icg_beat_mat_corrected,2))];   % if no beat left
+            EA_icg_AXC = [EA_icg_AXC zeros(1,size(ecg_beat_mat,2))];            % if no beat left
         elseif size(icg_beat_mat_corrected,1) == 1
             EA_icg_AXC = [EA_icg_AXC icg_beat_mat_corrected];                    % if one beat left
         else
