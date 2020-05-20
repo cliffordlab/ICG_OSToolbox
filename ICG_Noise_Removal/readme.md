@@ -1,12 +1,12 @@
 # Demonstration - ICG Noise Removal Algorithm 
 Use of Noise_removal.m to obtain three-stage ensemble averaged (EA) ICG. 
 
-1. [Adding Physionet Toolbox to path ](#physio)
+1. [Adding Physionet Cardiovascular Signal Toolbox to path ](#physio)
 2. [Designating Folders for Input and Output Data](#folder) 
 3. [Algorithm Execution and Output Data](#output) 
 
 <a name="physio"></a>
-## 1. Adding Physionet toolbox to path
+## 1. Adding Physionet Cardiovascular Signal toolbox to path
 Download and add the [Physionet Cardiovascular Signal toolbox](https://github.com/cliffordlab/PhysioNet-Cardiovascular-Signal-Toolbox) to MATLAB path.
 ![](noise_removal_gif/1_Add_physio.gif)
 
