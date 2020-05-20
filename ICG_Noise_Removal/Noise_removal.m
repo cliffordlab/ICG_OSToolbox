@@ -20,7 +20,7 @@
 %
 
 % REFERENCE: 
-%   Shafa-at Ali Sheikh et al. "An Open Sourc Toolbox for Automated Removal
+%   Shafa-at Ali Sheikh et al. "An Open Source Toolbox for Automated Removal
 %   of Noisy Beats for Accurate ICG Analysis" (** Details to be added**) 
 
 %	REPO for code:       
