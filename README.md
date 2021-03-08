@@ -8,7 +8,7 @@ If you are using this software, please cite:
 ```
 Shafa-at Ali Sheikh, Amit Shah, Oleksiy Levantsevych, Majd Soudan, Jamil Alkhalaf, Ali Bahrami Rad, Omer T.Inan,
 Gari D. Clifford, "An Open-Source Toolbox for Automated Removal of Noisy Beats for Accurate Impedance Cardiogram 
-Analysis", (under review) .
+Analysis", (2020) Physiol. Meas. 41 075002 .
 ```   
 
 <a name="intro"></a>
