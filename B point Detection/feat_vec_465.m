@@ -8,8 +8,8 @@
 %    produce noise free three-stage ensemble-averaged (EA) ICG signal.
 
 % INPUT:
-%    EA ICG beat data prepared using param.m. 
-%    Demo data available at   
+%    EA ICG beat data prepared using ICG_Noise_Removal/Noise_removal.m. 
+%    Demo data available at  B point Detection/Demo Data. 
 
 % OUTPUT: Feature vector for B point detection
 
